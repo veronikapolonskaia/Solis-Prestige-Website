@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - #{{order.orderNumber}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #10B981;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .content {
+            background-color: #f9f9f9;
+            padding: 30px;
+        }
+        .order-details {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        .totals {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #10B981;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .status.pending { background-color: #FEF3C7; color: #92400E; }
+        .status.processing { background-color: #DBEAFE; color: #1E40AF; }
+        .status.shipped { background-color: #D1FAE5; color: #065F46; }
+        .status.delivered { background-color: #D1FAE5; color: #065F46; }
+        .status.cancelled { background-color: #FEE2E2; color: #991B1B; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Order Confirmation</h1>
+        <p>Thank you for your order!</p>
+    </div>
+    
+    <div class="content">
+        <h2>Hi {{user.firstName}},</h2>
+        
+        <p>We've received your order and it's being processed. Here are your order details:</p>
+        
+        <div class="order-details">
+            <h3>Order #{{order.orderNumber}}</h3>
+            <p><strong>Order Date:</strong> {{formatDate order.createdAt}}</p>
+            <p><strong>Status:</strong> <span class="status {{order.status}}">{{order.status}}</span></p>
+            
+            <h4>Order Items:</h4>
+            {{#each order.orderItems}}
+            <div class="order-item">
+                <div>
+                    <strong>{{product.name}}</strong>
+                    {{#if variant}}<br><small>Variant: {{variant.name}}</small>{{/if}}
+                    <br><small>Quantity: {{quantity}}</small>
+                </div>
+                <div>
+                    <strong>${{formatPrice price}}</strong>
+                </div>
+            </div>
+            {{/each}}
+            
+            <div class="totals">
+                <div class="order-item">
+                    <span>Subtotal:</span>
+                    <span>${{formatPrice order.subtotal}}</span>
+                </div>
+                {{#if order.taxAmount}}
+                <div class="order-item">
+                    <span>Tax:</span>
+                    <span>${{formatPrice order.taxAmount}}</span>
+                </div>
+                {{/if}}
+                {{#if order.shippingAmount}}
+                <div class="order-item">
+                    <span>Shipping:</span>
+                    <span>${{formatPrice order.shippingAmount}}</span>
+                </div>
+                {{/if}}
+                {{#if order.discountAmount}}
+                <div class="order-item">
+                    <span>Discount:</span>
+                    <span>-${{formatPrice order.discountAmount}}</span>
+                </div>
+                {{/if}}
+                <div class="order-item">
+                    <strong>Total:</strong>
+                    <strong>${{formatPrice order.total}}</strong>
+                </div>
+            </div>
+        </div>
+        
+        {{#if order.shippingAddress}}
+        <h4>Shipping Address:</h4>
+        <p>
+            {{order.shippingAddress.firstName}} {{order.shippingAddress.lastName}}<br>
+            {{order.shippingAddress.address1}}<br>
+            {{#if order.shippingAddress.address2}}{{order.shippingAddress.address2}}<br>{{/if}}
+            {{order.shippingAddress.city}}, {{order.shippingAddress.state}} {{order.shippingAddress.zipCode}}<br>
+            {{order.shippingAddress.country}}
+        </p>
+        {{/if}}
+        
+        <div style="text-align: center;">
+            <a href="{{orderUrl}}" class="button">View Order Details</a>
+        </div>
+        
+        <p>We'll send you updates as your order progresses. If you have any questions, please contact our customer support team.</p>
+        
+        <p>Thank you for your business!</p>
+        
+        <p>Best regards,<br>The Store Team</p>
+    </div>
+    
+    <div class="footer">
+        <p>This email confirms your order with our store.</p>
+        <p>Order #{{order.orderNumber}} | {{formatDate order.createdAt}}</p>
+    </div>
+</body>
+</html> 
