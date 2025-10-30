@@ -205,72 +205,75 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Tagline Section */}
-      <section className="section-padding bg-gradient-to-br from-purple-50 to-white">
-        <div className="container-custom">
-          <div className="text-center max-w-4xl mx-auto">
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-              LuxeTravel is the trusted community for modern luxury travellers. Find inspiration, 
-              book unique journeys, and connect with like-minded members.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Features Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          {/* Feature 1 */}
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
-            <div className="order-2 md:order-1">
-              <div className="h-96 bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl flex items-center justify-center">
-                <Plane className="w-32 h-32 text-purple-600" />
-              </div>
-            </div>
-            <div className="order-1 md:order-2">
-              <h2 className="text-4xl font-display font-bold text-gray-900 mb-6">
+          {/* Feature 1 - VIP Benefits */}
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
+            <div className="order-1 md:order-1">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-6 relative inline-block">
                 Travel in style, with exclusive VIP benefits
+                <span className="block w-24 h-1 bg-purple-600 mt-4"></span>
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed mt-8">
                 Indulge in luxury with our curated collection of the world's best hotels and 
                 enjoy exclusive VIP benefits.
               </p>
             </div>
+            <div className="order-2 md:order-2">
+              <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&auto=format&fit=crop"
+                  alt="Luxury infinity pool at sunset"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
 
-          {/* Feature 2 */}
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
-            <div>
-              <h2 className="text-4xl font-display font-bold text-gray-900 mb-6">
+          {/* Feature 2 - Discover Inspiration */}
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
+            <div className="order-2 md:order-1">
+              <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1558979158-65a1eaa08691?w=800&auto=format&fit=crop"
+                  alt="Coastal village with turquoise water"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            <div className="order-1 md:order-2">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-6 relative inline-block">
                 Discover new inspiration for your next journey
+                <span className="block w-24 h-1 bg-orange-400 mt-4"></span>
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed mt-8">
                 Whether it's beautiful destinations or thrilling experiences, ignite your wanderlust 
                 and discover new reasons to travel and explore.
               </p>
             </div>
-            <div>
-              <div className="h-96 bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl flex items-center justify-center">
-                <Globe className="w-32 h-32 text-purple-600" />
-              </div>
-            </div>
           </div>
 
-          {/* Feature 3 */}
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1">
-              <div className="h-96 bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl flex items-center justify-center">
-                <Users className="w-32 h-32 text-purple-600" />
-              </div>
-            </div>
-            <div className="order-1 md:order-2">
-              <h2 className="text-4xl font-display font-bold text-gray-900 mb-6">
+          {/* Feature 3 - Community */}
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="order-1 md:order-1">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-6 relative inline-block">
                 Belong to a community with a shared passion
+                <span className="block w-24 h-1 bg-rose-400 mt-4"></span>
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed mt-8">
                 Connect with other members online or at our events and forge lasting friendships 
                 that transcend borders.
               </p>
+            </div>
+            <div className="order-2 md:order-2">
+              <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop"
+                  alt="Friends dining together at sunset"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
