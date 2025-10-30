@@ -41,13 +41,11 @@ const Header = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span
-              className={`text-2xl font-display font-bold tracking-tight transition-colors duration-300 ${
-                isScrolled ? 'text-purple-600' : 'text-white'
-              }`}
-            >
-              LuxeTravel
-            </span>
+            <img 
+              src="/SOLIS_Logo.png" 
+              alt="SOLIS" 
+              className="h-12 md:h-14 w-auto transition-all duration-300"
+            />
           </Link>
 
           {/* Desktop Navigation - Centered */}

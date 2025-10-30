@@ -35,6 +35,7 @@ export default {
           900: '#581c87',
           950: '#3b0764',
         },
+        champagne: '#f2dfcb',
       },
       fontFamily: {
         serif: ['Garamond', 'Georgia', 'serif'],

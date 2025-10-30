@@ -23,16 +23,184 @@ const Home = () => {
         
         {/* Content */}
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 tracking-tight">
-            Travel<span className="text-purple-300"> Discover</span> Belong
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight flex flex-wrap items-center justify-center gap-4 md:gap-6">
+            <span>Travel</span>
+            <span className="text-purple-300 text-3xl md:text-4xl">✦</span>
+            <span>Discover</span>
+            <span className="text-purple-300 text-3xl md:text-4xl">✦</span>
+            <span>Belong</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto font-light">
-            A community for luxury travellers
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to="/register" className="btn-outline px-10 py-4 text-lg">
-              Create free account
+        </div>
+      </section>
+
+      {/* Community Section */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="text-center max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-8">
+              A community for luxury travellers
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-10">
+              SOLIS is the trusted community for modern luxury travellers. Find inspiration,
+              book unique journeys, and connect with like-minded members.
+            </p>
+            <Link
+              to="/register"
+              className="inline-flex items-center gap-3 px-10 py-4 bg-gray-900 text-white rounded-full font-semibold text-lg hover:bg-gray-800 transition-all duration-300 shadow-lg"
+            >
+              CREATE FREE ACCOUNT
+              <span className="text-xl">→</span>
             </Link>
+          </div>
+        </div>
+
+        {/* As Seen In - Infinite Scrolling Carousel */}
+        <div className="mt-20 -mx-6 sm:-mx-8 lg:-mx-12 px-6 sm:px-8 lg:px-12 py-16 bg-champagne">
+          <p className="text-center text-sm text-gray-500 uppercase tracking-wider mb-8">
+            As seen in
+          </p>
+          
+          <div className="relative overflow-hidden">
+            {/* Gradient Overlays */}
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-champagne to-transparent z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-champagne to-transparent z-10"></div>
+            
+            {/* Scrolling Container */}
+            <div className="flex animate-scroll">
+              {/* First Set of Logos */}
+              <div className="flex items-center gap-12 px-8">
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/the_economist-c9544c1900bfab04a8d16c9e2cef730e82b13ef782734deb717d4932ac956eeb.svg" 
+                    alt="The Economist" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/the_guardian-d9555e7c4654b0e50f7e5d461c3fd0b1c16b909f454d1bf989ca09dad66fefca.svg" 
+                    alt="The Guardian" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/monde-36500a0edc87c8f1288eb7d471fbea4710dba6e0c4b904dd5652e10c3a9289e9.svg" 
+                    alt="Le Monde" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/forbes-662d2ec035661bc9cf75ecabd31a4a85c01fb0dbb8d9c0702fb7b7942b3cfce9.svg" 
+                    alt="Forbes" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/vogue-100f6560f7c4524cfeab4a03fb99a54fac77893da9633722a02bacd4e1190be7.svg" 
+                    alt="Vogue" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/nytimes-ee4a8ee7b0805b66ff6e800dac1f752154636690aa55bb812706b5c2243cf47e.svg" 
+                    alt="The New York Times" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/cnn-4dbea7809ec81b6fd6baddf06898c9678f738e467c0ee4922530cfea1a8ba404.svg" 
+                    alt="CNN" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/business_insider-f0b99217af1c8b7a1a143197b363f42b09baca5d32fab4c6eb2d91777391dd0b.svg" 
+                    alt="Business Insider" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+              </div>
+              
+              {/* Duplicate Set for Seamless Loop */}
+              <div className="flex items-center gap-12 px-8" aria-hidden="true">
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/the_economist-c9544c1900bfab04a8d16c9e2cef730e82b13ef782734deb717d4932ac956eeb.svg" 
+                    alt="The Economist" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/the_guardian-d9555e7c4654b0e50f7e5d461c3fd0b1c16b909f454d1bf989ca09dad66fefca.svg" 
+                    alt="The Guardian" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/monde-36500a0edc87c8f1288eb7d471fbea4710dba6e0c4b904dd5652e10c3a9289e9.svg" 
+                    alt="Le Monde" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/forbes-662d2ec035661bc9cf75ecabd31a4a85c01fb0dbb8d9c0702fb7b7942b3cfce9.svg" 
+                    alt="Forbes" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/vogue-100f6560f7c4524cfeab4a03fb99a54fac77893da9633722a02bacd4e1190be7.svg" 
+                    alt="Vogue" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/nytimes-ee4a8ee7b0805b66ff6e800dac1f752154636690aa55bb812706b5c2243cf47e.svg" 
+                    alt="The New York Times" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/cnn-4dbea7809ec81b6fd6baddf06898c9678f738e467c0ee4922530cfea1a8ba404.svg" 
+                    alt="CNN" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-center min-w-[180px]">
+                  <img 
+                    src="https://dv4xo43u9eo19.cloudfront.net/assets/welcome/network/business_insider-f0b99217af1c8b7a1a143197b363f42b09baca5d32fab4c6eb2d91777391dd0b.svg" 
+                    alt="Business Insider" 
+                    className="h-16 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
