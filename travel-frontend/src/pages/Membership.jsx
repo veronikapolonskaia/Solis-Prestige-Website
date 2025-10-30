@@ -375,25 +375,39 @@ const Membership = () => {
         </div>
       </section>
 
-      {/* Additional Info Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6">
-            Choose the membership that fits your lifestyle
-          </h2>
-          <p className="text-lg text-gray-600 leading-relaxed mb-8">
-            Whether you're looking for weekend getaways or planning luxury adventures around the world, 
-            we have a membership tier designed for you. Unlock exclusive benefits, VIP hotel perks, 
-            and access to a global community of luxury travelers.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-3 px-10 py-4 bg-purple-600 text-white rounded-full font-semibold text-sm uppercase tracking-wider hover:bg-purple-700 transition-all duration-300 shadow-lg"
-          >
-            HAVE QUESTIONS? CONTACT US
-          </Link>
+      {/* Contact Us Hero */}
+      <section id="contact-us" className="relative w-full overflow-hidden">
+        {/* 4:1 ratio container */}
+        <div className="relative w-full" style={{ paddingTop: '25%' }}>
+          <img
+            loading="lazy"
+            alt="Contact Us"
+            src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/contact_us-9539653b149b15f427bb689a6d8060c061692354e12e43b9c73bd269503403e3.jpg"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white bg-black/30">
+            <p className="text-3xl md:text-5xl font-bold mb-4 drop-shadow">
+              Have a question?
+            </p>
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 drop-shadow-lg">
+              Contact Us
+            </h2>
+            <a
+              href="mailto:support@asw.com"
+              className="inline-flex items-center px-8 py-3 rounded-full bg-white/90 text-[#1a3a52] font-semibold tracking-wide hover:bg-white transition-colors"
+            >
+              <span className="mr-3 inline-block">
+                {/* simple mail icon using emoji fallback to avoid asset dependency */}
+                ✉️
+              </span>
+              Contact Us
+            </a>
+          </div>
         </div>
       </section>
+
+      {/** Removed bottom CTA/info section per request **/}
     </div>
   );
 };
