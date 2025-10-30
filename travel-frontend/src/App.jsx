@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import Bespoke from './pages/Bespoke';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="/bespoke" element={<Bespoke />} />
           {/* Add more routes here as you create pages */}
           {/* <Route path="/destinations" element={<Destinations />} /> */}
           {/* <Route path="/about" element={<About />} /> */}
