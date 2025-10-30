@@ -558,26 +558,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-purple-600 to-purple-800 text-white">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl font-display font-bold mb-6">
-              Ready to Start Your Journey?
-            </h2>
-            <p className="text-xl mb-10 text-purple-100">
-              Join thousands of luxury travellers who have discovered amazing places with us
-            </p>
-            <Link
-              to="/register"
-              className="inline-block px-10 py-4 bg-white text-purple-600 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg"
-            >
-              Create free account
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
