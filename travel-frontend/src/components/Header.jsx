@@ -30,10 +30,11 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white shadow-md'
-          : 'bg-transparent'
+      style={{
+        backgroundColor: isScrolled ? '#ffffff' : 'transparent'
+      }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'shadow-md' : 'backdrop-blur-sm'
       }`}
     >
       <nav className="container-custom">
