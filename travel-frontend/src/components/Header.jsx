@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import LoginModal from './LoginModal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,6 +29,30 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const [showLogin, setShowLogin] = useState(false);
+
+  const openLogin = (e) => {
+    if (e) e.preventDefault();
+    setShowLogin(true);
+    try {
+      document.body.style.overflow = 'hidden';
+      const videos = document.querySelectorAll('video');
+      videos.forEach((v) => {
+        try { v.pause(); } catch {}
+      });
+    } catch {}
+  };
+  const closeLogin = () => {
+    setShowLogin(false);
+    try {
+      document.body.style.overflow = '';
+      const videos = document.querySelectorAll('video');
+      videos.forEach((v) => {
+        try { v.play(); } catch {}
+      });
+    } catch {}
+  };
+
   return (
     <header
       style={{
@@ -38,23 +63,23 @@ const Header = () => {
       }`}
     >
       <nav className="container-custom">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
               src="/SOLIS_Logo.png" 
               alt="SOLIS" 
-              className="h-12 md:h-14 w-auto transition-all duration-300"
+              className="h-20 md:h-24 w-auto transition-all duration-300"
             />
           </Link>
 
           {/* Desktop Navigation - Centered */}
-          <div className="hidden lg:flex items-center space-x-10 absolute left-1/2 transform -translate-x-1/2">
+          <div className="hidden lg:flex items-center space-x-14 absolute left-1/2 transform -translate-x-1/2">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className={`nav-link relative hover:text-purple-600 transition-colors font-medium text-sm tracking-wide ${
+                className={`nav-link relative hover:text-purple-600 transition-colors font-semibold text-lg md:text-xl tracking-wider ${
                   isScrolled ? 'text-gray-700' : 'text-white'
                 }`}
               >
@@ -64,18 +89,19 @@ const Header = () => {
           </div>
 
           {/* Auth Buttons - Right */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <Link
-              to="/login"
-              className={`hover:text-purple-600 transition-colors font-medium text-sm ${
+          <div className="hidden lg:flex items-center space-x-6">
+            <a
+              href="#login"
+              onClick={openLogin}
+              className={`hover:text-purple-600 transition-colors font-semibold text-lg md:text-xl ${
                 isScrolled ? 'text-gray-700' : 'text-white'
               }`}
             >
               Login
-            </Link>
+            </a>
             <Link
               to="/register"
-              className={`px-6 py-2.5 rounded-full font-medium text-sm transition-all duration-300 ${
+              className={`px-8 py-3.5 rounded-full font-semibold text-lg md:text-xl transition-all duration-300 ${
                 isScrolled
                   ? 'bg-purple-600 text-white hover:bg-purple-700'
                   : 'bg-white text-purple-600 hover:bg-gray-100'
@@ -96,9 +122,9 @@ const Header = () => {
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              <X className={`w-6 h-6 ${isScrolled ? 'text-gray-700' : 'text-white'}`} />
+              <X className={`w-8 h-8 ${isScrolled ? 'text-gray-700' : 'text-white'}`} />
             ) : (
-              <Menu className={`w-6 h-6 ${isScrolled ? 'text-gray-700' : 'text-white'}`} />
+              <Menu className={`w-8 h-8 ${isScrolled ? 'text-gray-700' : 'text-white'}`} />
             )}
           </button>
         </div>
@@ -108,12 +134,12 @@ const Header = () => {
           <div className={`lg:hidden pb-6 pt-2 border-t ${
             isScrolled ? 'border-gray-100 bg-white' : 'border-white/20 bg-black/50 backdrop-blur-md'
           }`}>
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`hover:text-purple-600 transition-colors font-medium ${
+                  className={`hover:text-purple-600 transition-colors font-semibold text-xl ${
                     isScrolled ? 'text-gray-700' : 'text-white'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
@@ -124,18 +150,18 @@ const Header = () => {
               <div className={`pt-4 border-t space-y-3 ${
                 isScrolled ? 'border-gray-100' : 'border-white/20'
               }`}>
-                <Link
-                  to="/login"
-                  className={`block hover:text-purple-600 transition-colors font-medium ${
+                <a
+                  href="#login"
+                  className={`block hover:text-purple-600 transition-colors font-semibold text-xl ${
                     isScrolled ? 'text-gray-700' : 'text-white'
                   }`}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); openLogin(); }}
                 >
                   Login
-                </Link>
+                </a>
                 <Link
                   to="/register"
-                  className={`block text-center px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
+                  className={`block text-center px-8 py-3.5 rounded-full font-semibold text-xl transition-all duration-300 ${
                     isScrolled
                       ? 'bg-purple-600 text-white hover:bg-purple-700'
                       : 'bg-white text-purple-600 hover:bg-gray-100'
@@ -149,6 +175,7 @@ const Header = () => {
           </div>
         )}
       </nav>
+      <LoginModal open={showLogin} onClose={closeLogin} />
     </header>
   );
 };

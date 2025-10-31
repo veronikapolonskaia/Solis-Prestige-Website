@@ -1,0 +1,15 @@
+
+> travel-frontend@0.0.0 dev
+> vite --port 5173
+
+
+  VITE v7.1.12  ready in 242 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+10:40:21 AM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+10:40:29 AM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+10:41:19 AM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+10:41:24 AM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+10:41:44 AM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+10:41:55 AM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
