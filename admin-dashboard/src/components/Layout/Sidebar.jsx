@@ -10,6 +10,7 @@ import {
   PuzzlePieceIcon,
   PhotoIcon,
   XMarkIcon,
+  NewspaperIcon,
 } from '@heroicons/react/24/outline';
 import { useAuth } from '../../context/AuthContext';
 import { getInitials, getFullName } from '../../utils/helpers';
@@ -19,6 +20,7 @@ const navigation = [
   { name: 'Products', href: '/products', icon: CubeIcon },
   { name: 'Categories', href: '/categories', icon: CubeIcon },
   { name: 'Gallery', href: '/gallery', icon: PhotoIcon },
+  { name: 'Editorials', href: '/editorials', icon: NewspaperIcon },
   { name: 'Orders', href: '/orders', icon: ShoppingCartIcon },
   { name: 'Customers', href: '/customers', icon: UsersIcon },
   { name: 'Analytics', href: '/analytics', icon: ChartBarIcon },

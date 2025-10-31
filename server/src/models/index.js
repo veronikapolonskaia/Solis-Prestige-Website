@@ -9,6 +9,7 @@ const Cart = require('./Cart');
 const Address = require('./Address');
 const Setting = require('./Setting');
 const Gallery = require('./Gallery');
+const Editorial = require('./Editorial');
 
 // User Associations
 User.hasMany(Order, { foreignKey: 'userId', as: 'orders' });
@@ -57,5 +58,6 @@ module.exports = {
   Cart,
   Address,
   Setting,
-  Gallery
+  Gallery,
+  Editorial
 }; 

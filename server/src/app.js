@@ -25,6 +25,7 @@ const checkoutRoutes = require('./routes/checkout');
 const analyticsRoutes = require('./routes/analytics');
 const settingsRoutes = require('./routes/settings');
 const galleryRoutes = require('./routes/gallery');
+const editorialRoutes = require('./routes/editorials');
 
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
@@ -122,6 +123,7 @@ app.use('/api/checkout', checkoutRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/gallery', galleryRoutes);
+app.use('/api/editorials', editorialRoutes);
 
 // Initialize database
 async function initializeApp() {

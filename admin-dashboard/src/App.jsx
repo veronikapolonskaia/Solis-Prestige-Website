@@ -20,6 +20,8 @@ import Gallery from './pages/Gallery.jsx';
 import GalleryForm from './pages/GalleryForm.jsx';
 import CategoryCreate from './pages/CategoryCreate.jsx';
 import CategoryDetail from './pages/CategoryDetail.jsx';
+import Editorials from './pages/Editorials.jsx';
+import EditorialCreate from './pages/EditorialCreate.jsx';
 
 // Protected route component
 const ProtectedRoute = ({ children }) => {
@@ -248,6 +250,26 @@ const AppContent = () => {
               <ProtectedRoute>
                 <Layout>
                   <GalleryForm />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/editorials"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Editorials />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/editorials/new"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <EditorialCreate />
                 </Layout>
               </ProtectedRoute>
             }

@@ -63,3 +63,54 @@
 11:12:51 AM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
 11:12:51 AM [vite] (client) hmr update /src/components/LoginModal.jsx, /src/index.css
 11:12:51 AM [vite] (client) hmr update /src/context/AuthContext.jsx, /src/index.css
+11:21:32 AM [vite] (client) hmr update /src/App.jsx, /src/index.css
+11:21:50 AM [vite] (client) hmr update /src/App.jsx, /src/index.css
+
+> travel-frontend@0.0.0 dev
+> vite --port 5173
+
+
+  VITE v7.1.12  ready in 231 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+11:36:04 AM [vite] (client) hmr update /src/pages/Editorials.jsx, /src/index.css
+11:36:24 AM [vite] (client) hmr update /src/pages/EditorialDetail.jsx, /src/index.css
+11:36:42 AM [vite] (client) hmr update /src/pages/Editorials.jsx, /src/index.css
+11:36:42 AM [vite] (client) hmr update /src/pages/EditorialDetail.jsx, /src/index.css
+
+> travel-frontend@0.0.0 dev
+> vite --port 5173
+
+
+  VITE v7.1.12  ready in 298 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+
+> travel-frontend@0.0.0 dev
+> vite --port 5173
+
+
+  VITE v7.1.12  ready in 328 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+
+> travel-frontend@0.0.0 dev
+> vite --port 5173
+
+
+  VITE v7.1.12  ready in 365 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+
+> travel-frontend@0.0.0 dev
+> vite --port 5173
+
+
+  VITE v7.1.12  ready in 402 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose

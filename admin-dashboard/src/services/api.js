@@ -124,6 +124,20 @@ export const uploadAPI = {
       },
     });
   },
+  uploadVideo: (file) => {
+    const formData = new FormData();
+    formData.append('video', file);
+    return api.post('/upload/video', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  },
+  docxToHtml: (file) => {
+    const formData = new FormData();
+    formData.append('doc', file);
+    return api.post('/upload/docx-to-html', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  },
   uploadProductImages: (files) => {
     const formData = new FormData();
     files.forEach((file) => {
@@ -159,6 +173,15 @@ export const analyticsAPI = {
   getCustomers: (params) => api.get('/analytics/customers', { params }),
   getDashboard: () => api.get('/analytics/dashboard'),
   export: (params) => api.get('/analytics/export', { params, responseType: 'blob' }),
+};
+
+// Editorials (Articles)
+export const editorialsAPI = {
+  list: (params) => api.get('/editorials', { params }),
+  getBySlug: (slug) => api.get(`/editorials/${slug}`),
+  create: (data) => api.post('/editorials', data), // requires admin token
+  update: (id, data) => api.put(`/editorials/${id}`, data),
+  delete: (id) => api.delete(`/editorials/${id}`),
 };
 
 export default api; 
