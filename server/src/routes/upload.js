@@ -231,7 +231,36 @@ router.post('/docx-to-html', authenticate, requireAdmin, upload.single('doc'), a
       return res.status(400).json({ success: false, error: 'No document provided' });
     }
     const mammoth = require('mammoth');
-    const result = await mammoth.convertToHtml({ buffer: req.file.buffer }, { convertImage: mammoth.images.inline() });
+
+    const uploadPath = process.env.UPLOAD_PATH || 'uploads';
+    await fs.mkdir(uploadPath, { recursive: true });
+
+    const result = await mammoth.convertToHtml(
+      { buffer: req.file.buffer },
+      {
+        convertImage: mammoth.images.imgElement(async (image) => {
+          try {
+            const contentType = image.contentType; // e.g. 'image/png'
+            const ext = contentType === 'image/png' ? '.png' : contentType === 'image/jpeg' ? '.jpg' : '.png';
+            const base64 = await image.read('base64');
+            const buffer = Buffer.from(base64, 'base64');
+
+            const baseName = `${Date.now()}-${Math.random().toString(36).substring(7)}`;
+            const fileName = `${baseName}${ext}`;
+            const dest = path.join(uploadPath, fileName);
+            await fs.writeFile(dest, buffer);
+
+            const url = `${process.env.API_BASE_URL || 'http://localhost:5000/api'}/uploads/${fileName}`;
+            return { src: url };
+          } catch (e) {
+            // Fallback to inline if upload fails
+            const base64 = await image.read('base64');
+            return { src: `data:${image.contentType};base64,${base64}` };
+          }
+        })
+      }
+    );
+
     res.json({ success: true, data: { html: result.value } });
   } catch (error) {
     console.error('DOCX convert error:', error);

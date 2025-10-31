@@ -114,3 +114,5 @@
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
+12:00:20 PM [vite] (client) hmr update /src/pages/Editorials.jsx, /src/index.css
+12:00:30 PM [vite] (client) hmr update /src/pages/Editorials.jsx, /src/index.css
