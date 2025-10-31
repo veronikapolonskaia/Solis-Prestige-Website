@@ -1,9 +1,16 @@
 import { X } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { login } from '../services/auth';
+import { useAuth } from '../context/AuthContext.jsx';
 
 const LoginModal = ({ open, onClose }) => {
   const dialogRef = useRef(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const { setAuthFromModal } = useAuth?.() || {};
   if (!open) return null;
 
   const stop = (e) => e.stopPropagation();
@@ -30,11 +37,34 @@ const LoginModal = ({ open, onClose }) => {
 
         <h2 className="text-3xl font-display font-bold text-center text-gray-900 mb-6">Login</h2>
 
-        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+        <form
+          className="space-y-4"
+          onSubmit={async (e) => {
+            e.preventDefault();
+            setError('');
+            setLoading(true);
+            try {
+              const user = await login({ email, password });
+              if (setAuthFromModal) setAuthFromModal(user);
+              onClose();
+            } catch (err) {
+              const apiErr = err?.response?.data;
+              let msg = apiErr?.error || 'Invalid email or password';
+              if (apiErr?.details && Array.isArray(apiErr.details) && apiErr.details.length) {
+                msg = apiErr.details[0]?.msg || msg;
+              }
+              setError(msg);
+            } finally {
+              setLoading(false);
+            }
+          }}
+        >
           <div>
             <input
               type="text"
               placeholder="Email or Username"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
             />
           </div>
@@ -42,14 +72,22 @@ const LoginModal = ({ open, onClose }) => {
             <input
               type="password"
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
             />
           </div>
+          {error && (
+            <p className="text-sm text-red-600">{error}</p>
+          )}
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 rounded-full bg-[#1a3a52] hover:bg-[#2a4a62] text-white py-3 font-semibold text-sm tracking-wider"
+            disabled={loading}
+            className={`w-full flex items-center justify-center gap-2 rounded-full text-white py-3 font-semibold text-sm tracking-wider ${
+              loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#1a3a52] hover:bg-[#2a4a62]'
+            }`}
           >
-            LOGIN
+            {loading ? 'LOGGING IN...' : 'LOGIN'}
             <span aria-hidden>→</span>
           </button>
         </form>

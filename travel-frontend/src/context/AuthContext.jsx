@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { authAPI } from '../services/api';
+import { login as authLogin, register as authRegister, logout as authLogout, getProfile } from '../services/auth';
 
 const AuthContext = createContext(null);
 
@@ -18,13 +18,12 @@ export const AuthProvider = ({ children }) => {
 
   // Check if user is logged in on mount
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const savedUser = localStorage.getItem('user');
+    const token = localStorage.getItem('auth_token');
+    const savedUser = localStorage.getItem('auth_user');
 
     if (token && savedUser) {
       setUser(JSON.parse(savedUser));
       setIsAuthenticated(true);
-      // Optionally verify token with backend
       verifyToken();
     } else {
       setLoading(false);
@@ -33,9 +32,9 @@ export const AuthProvider = ({ children }) => {
 
   const verifyToken = async () => {
     try {
-      const response = await authAPI.getProfile();
-      if (response.success) {
-        setUser(response.data);
+      const profile = await getProfile();
+      if (profile) {
+        setUser(profile);
         setIsAuthenticated(true);
       }
     } catch (error) {
@@ -48,15 +47,10 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
-      const response = await authAPI.login(credentials);
-      if (response.success) {
-        const { user, token } = response.data;
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
-        setUser(user);
-        setIsAuthenticated(true);
-        return { success: true };
-      }
+      const user = await authLogin(credentials);
+      setUser(user);
+      setIsAuthenticated(true);
+      return { success: true };
     } catch (error) {
       return {
         success: false,
@@ -67,15 +61,10 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const response = await authAPI.register(userData);
-      if (response.success) {
-        const { user, token } = response.data;
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
-        setUser(user);
-        setIsAuthenticated(true);
-        return { success: true };
-      }
+      const user = await authRegister(userData);
+      setUser(user);
+      setIsAuthenticated(true);
+      return { success: true };
     } catch (error) {
       return {
         success: false,
@@ -85,12 +74,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    authLogout();
     setUser(null);
     setIsAuthenticated(false);
-    // Optionally call logout API
-    authAPI.logout().catch(() => {});
   };
 
   const updateUser = (userData) => {
@@ -106,6 +92,7 @@ export const AuthProvider = ({ children }) => {
     register,
     logout,
     updateUser,
+    setAuthFromModal: (u) => { setUser(u); setIsAuthenticated(true); }
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

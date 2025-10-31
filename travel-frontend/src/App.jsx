@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Bespoke from './pages/Bespoke';
 import Membership from './pages/Membership';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           {/* <Route path="/about" element={<About />} /> */}
           {/* <Route path="/contact" element={<Contact />} /> */}
           {/* <Route path="/login" element={<Login />} /> */}
-          {/* <Route path="/register" element={<Register />} /> */}
+          <Route path="/register" element={<Register />} />
         </Route>
       </Routes>
     </Router>

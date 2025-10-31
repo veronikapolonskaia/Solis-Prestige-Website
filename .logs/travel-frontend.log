@@ -18,3 +18,48 @@
 10:43:19 AM [vite] (client) page reload index.html
 10:43:53 AM [vite] (client) page reload index.html
 10:43:56 AM [vite] (client) page reload index.html
+10:48:57 AM [vite] (client) hmr update /src/context/AuthContext.jsx, /src/index.css
+10:49:43 AM [vite] (client) hmr update /src/components/LoginModal.jsx, /src/index.css
+10:50:15 AM [vite] (client) hmr update /src/App.jsx, /src/index.css
+10:50:25 AM [vite] (client) hmr update /src/context/AuthContext.jsx, /src/components/LoginModal.jsx, /src/pages/Register.jsx, /src/index.css
+10:50:25 AM [vite] (client) hmr update /src/components/LoginModal.jsx, /src/pages/Register.jsx, /src/index.css
+10:50:25 AM [vite] (client) hmr update /src/components/LoginModal.jsx, /src/index.css
+10:50:25 AM [vite] (client) hmr update /src/pages/Register.jsx, /src/index.css
+10:50:25 AM [vite] (client) hmr update /src/App.jsx, /src/index.css
+10:52:26 AM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+10:52:35 AM [vite] (client) hmr update /src/components/SignupModal.jsx, /src/index.css
+10:52:35 AM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+
+> travel-frontend@0.0.0 dev
+> vite --port 5173
+
+
+  VITE v7.1.12  ready in 248 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+10:55:20 AM [vite] (client) hmr update /src/context/AuthContext.jsx, /src/pages/Register.jsx, /src/components/LoginModal.jsx, /src/components/SignupModal.jsx, /src/index.css
+10:55:29 AM [vite] (client) hmr update /src/context/AuthContext.jsx, /src/pages/Register.jsx, /src/components/LoginModal.jsx, /src/components/SignupModal.jsx, /src/index.css
+
+> travel-frontend@0.0.0 dev
+> vite --port 5173
+
+
+  VITE v7.1.12  ready in 211 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+11:07:26 AM [vite] (client) hmr update /src/pages/Register.jsx, /src/components/LoginModal.jsx, /src/components/SignupModal.jsx, /src/index.css
+11:07:51 AM [vite] (client) hmr update /src/context/AuthContext.jsx, /src/index.css
+11:08:00 AM [vite] (client) hmr update /src/pages/Register.jsx, /src/components/LoginModal.jsx, /src/components/SignupModal.jsx, /src/index.css
+11:08:00 AM [vite] (client) hmr update /src/context/AuthContext.jsx, /src/index.css
+11:08:57 AM [vite] (client) hmr update /src/components/SignupModal.jsx, /src/index.css
+11:09:09 AM [vite] (client) hmr update /src/components/SignupModal.jsx, /src/index.css
+11:12:09 AM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+11:12:28 AM [vite] (client) hmr update /src/components/LoginModal.jsx, /src/index.css
+11:12:40 AM [vite] (client) hmr update /src/context/AuthContext.jsx, /src/index.css
+11:12:40 AM [vite] (client) hmr invalidate /src/context/AuthContext.jsx Could not Fast Refresh ("useAuth" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+11:12:40 AM [vite] (client) page reload src/context/AuthContext.jsx
+11:12:51 AM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+11:12:51 AM [vite] (client) hmr update /src/components/LoginModal.jsx, /src/index.css
+11:12:51 AM [vite] (client) hmr update /src/context/AuthContext.jsx, /src/index.css

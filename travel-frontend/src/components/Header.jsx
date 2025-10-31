@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import LoginModal from './LoginModal';
+import SignupModal from './SignupModal';
+import { useAuth } from '../context/AuthContext.jsx';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,6 +32,8 @@ const Header = () => {
   }, []);
 
   const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+  const { isAuthenticated, user, logout } = useAuth();
 
   const openLogin = (e) => {
     if (e) e.preventDefault();
@@ -44,6 +48,28 @@ const Header = () => {
   };
   const closeLogin = () => {
     setShowLogin(false);
+    try {
+      document.body.style.overflow = '';
+      const videos = document.querySelectorAll('video');
+      videos.forEach((v) => {
+        try { v.play(); } catch {}
+      });
+    } catch {}
+  };
+
+  const openSignup = (e) => {
+    if (e) e.preventDefault();
+    setShowSignup(true);
+    try {
+      document.body.style.overflow = 'hidden';
+      const videos = document.querySelectorAll('video');
+      videos.forEach((v) => {
+        try { v.pause(); } catch {}
+      });
+    } catch {}
+  };
+  const closeSignup = () => {
+    setShowSignup(false);
     try {
       document.body.style.overflow = '';
       const videos = document.querySelectorAll('video');
@@ -88,27 +114,48 @@ const Header = () => {
             ))}
           </div>
 
-          {/* Auth Buttons - Right */}
+          {/* Auth Area - Right */}
           <div className="hidden lg:flex items-center space-x-6">
-            <a
-              href="#login"
-              onClick={openLogin}
-              className={`hover:text-purple-600 transition-colors font-semibold text-lg md:text-xl ${
-                isScrolled ? 'text-gray-700' : 'text-white'
-              }`}
-            >
-              Login
-            </a>
-            <Link
-              to="/register"
-              className={`px-8 py-3.5 rounded-full font-semibold text-lg md:text-xl transition-all duration-300 ${
-                isScrolled
-                  ? 'bg-purple-600 text-white hover:bg-purple-700'
-                  : 'bg-white text-purple-600 hover:bg-gray-100'
-              }`}
-            >
-              Join
-            </Link>
+            {isAuthenticated ? (
+              <>
+                <div className={`flex items-center gap-2 font-semibold text-lg md:text-xl ${isScrolled ? 'text-gray-700' : 'text-white'}`}>
+                  <User2 className="w-6 h-6" />
+                  <span>{user?.firstName || 'Account'}</span>
+                </div>
+                <button
+                  onClick={logout}
+                  className={`px-6 py-3 rounded-full font-semibold text-base md:text-lg transition-all duration-300 ${
+                    isScrolled
+                      ? 'bg-gray-900 text-white hover:bg-black'
+                      : 'bg-white/10 text-white hover:bg-white/20'
+                  }`}
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <a
+                  href="#login"
+                  onClick={openLogin}
+                  className={`hover:text-purple-600 transition-colors font-semibold text-lg md:text-xl ${
+                    isScrolled ? 'text-gray-700' : 'text-white'
+                  }`}
+                >
+                  Login
+                </a>
+                <button
+                  onClick={openSignup}
+                  className={`px-8 py-3.5 rounded-full font-semibold text-lg md:text-xl transition-all duration-300 ${
+                    isScrolled
+                      ? 'bg-purple-600 text-white hover:bg-purple-700'
+                      : 'bg-white text-purple-600 hover:bg-gray-100'
+                  }`}
+                >
+                  Join
+                </button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -150,32 +197,53 @@ const Header = () => {
               <div className={`pt-4 border-t space-y-3 ${
                 isScrolled ? 'border-gray-100' : 'border-white/20'
               }`}>
-                <a
-                  href="#login"
-                  className={`block hover:text-purple-600 transition-colors font-semibold text-xl ${
-                    isScrolled ? 'text-gray-700' : 'text-white'
-                  }`}
-                  onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); openLogin(); }}
-                >
-                  Login
-                </a>
-                <Link
-                  to="/register"
-                  className={`block text-center px-8 py-3.5 rounded-full font-semibold text-xl transition-all duration-300 ${
-                    isScrolled
-                      ? 'bg-purple-600 text-white hover:bg-purple-700'
-                      : 'bg-white text-purple-600 hover:bg-gray-100'
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Join
-                </Link>
+                {isAuthenticated ? (
+                  <>
+                    <div className={`flex items-center gap-2 font-semibold text-xl ${isScrolled ? 'text-gray-700' : 'text-white'}`}>
+                      <User2 className="w-6 h-6" />
+                      <span>{user?.firstName || 'Account'}</span>
+                    </div>
+                    <button
+                      onClick={() => { setIsMenuOpen(false); logout(); }}
+                      className={`block w-full text-center px-8 py-3.5 rounded-full font-semibold text-xl transition-all duration-300 ${
+                        isScrolled
+                          ? 'bg-gray-900 text-white hover:bg-black'
+                          : 'bg-white/10 text-white hover:bg-white/20'
+                      }`}
+                    >
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <a
+                      href="#login"
+                      className={`block hover:text-purple-600 transition-colors font-semibold text-xl ${
+                        isScrolled ? 'text-gray-700' : 'text-white'
+                      }`}
+                      onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); openLogin(); }}
+                    >
+                      Login
+                    </a>
+                    <button
+                      onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); openSignup(); }}
+                      className={`block w-full text-center px-8 py-3.5 rounded-full font-semibold text-xl transition-all duration-300 ${
+                        isScrolled
+                          ? 'bg-purple-600 text-white hover:bg-purple-700'
+                          : 'bg-white text-purple-600 hover:bg-gray-100'
+                      }`}
+                    >
+                      Join
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>
         )}
       </nav>
       <LoginModal open={showLogin} onClose={closeLogin} />
+      <SignupModal open={showSignup} onClose={closeSignup} />
     </header>
   );
 };
