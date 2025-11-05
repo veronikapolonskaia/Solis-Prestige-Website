@@ -22,6 +22,9 @@ import CategoryCreate from './pages/CategoryCreate.jsx';
 import CategoryDetail from './pages/CategoryDetail.jsx';
 import Editorials from './pages/Editorials.jsx';
 import EditorialCreate from './pages/EditorialCreate.jsx';
+import Hotels from './pages/Hotels.jsx';
+import HotelCreate from './pages/HotelCreate.jsx';
+import HotelEdit from './pages/HotelEdit.jsx';
 
 // Protected route component
 const ProtectedRoute = ({ children }) => {
@@ -270,6 +273,36 @@ const AppContent = () => {
               <ProtectedRoute>
                 <Layout>
                   <EditorialCreate />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/hotels"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Hotels />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/hotels/new"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <HotelCreate />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/hotels/:id/edit"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <HotelEdit />
                 </Layout>
               </ProtectedRoute>
             }

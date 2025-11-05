@@ -50,6 +50,7 @@ export const AuthProvider = ({ children }) => {
       const user = await authLogin(credentials);
       setUser(user);
       setIsAuthenticated(true);
+      localStorage.setItem('auth_user', JSON.stringify(user));
       return { success: true };
     } catch (error) {
       return {
@@ -64,6 +65,7 @@ export const AuthProvider = ({ children }) => {
       const user = await authRegister(userData);
       setUser(user);
       setIsAuthenticated(true);
+      localStorage.setItem('auth_user', JSON.stringify(user));
       return { success: true };
     } catch (error) {
       return {

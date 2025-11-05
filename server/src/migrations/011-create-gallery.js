@@ -2,6 +2,20 @@ const { DataTypes } = require('sequelize');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    // Check if table already exists
+    const tableExists = await queryInterface.sequelize.query(
+      `SELECT EXISTS (
+        SELECT FROM information_schema.tables 
+        WHERE table_schema = 'public' 
+        AND table_name = 'galleries'
+      );`
+    );
+    
+    if (tableExists[0][0].exists) {
+      console.log('Galleries table already exists, skipping creation');
+      return;
+    }
+
     await queryInterface.createTable('galleries', {
       id: {
         type: DataTypes.INTEGER,

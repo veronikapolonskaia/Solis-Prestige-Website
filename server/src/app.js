@@ -26,6 +26,8 @@ const analyticsRoutes = require('./routes/analytics');
 const settingsRoutes = require('./routes/settings');
 const galleryRoutes = require('./routes/gallery');
 const editorialRoutes = require('./routes/editorials');
+const hotelRoutes = require('./routes/hotels');
+const bookingRoutes = require('./routes/bookings');
 
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
@@ -124,6 +126,8 @@ app.use('/api/analytics', analyticsRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/editorials', editorialRoutes);
+app.use('/api/hotels', hotelRoutes);
+app.use('/api/bookings', bookingRoutes);
 
 // Initialize database
 async function initializeApp() {
@@ -131,9 +135,11 @@ async function initializeApp() {
     // Test database connection
     await testConnection();
     
-    // Sync database models
-    const models = require('./models');
-    await sequelize.sync({ alter: process.env.NODE_ENV === 'development' });
+    // Sync database models - only if SYNC_MODELS is enabled
+    if (process.env.SYNC_MODELS === 'true') {
+      const models = require('./models');
+      await sequelize.sync({ alter: true });
+    }
     
     console.log('Database initialized successfully');
   } catch (error) {

@@ -1,6 +1,6 @@
 const express = require('express');
 const { body, validationResult } = require('express-validator');
-const { Order, OrderItem, Product, ProductVariant, User, Address } = require('../models');
+const { Order, OrderItem, Product, ProductVariant, User, Address, Hotel } = require('../models');
 const { renderInvoiceHtml } = require('../utils/invoice');
 const settingsManager = require('../utils/settings');
 const { authenticate, requireAdmin } = require('../middleware/auth');
@@ -255,12 +255,20 @@ router.get('/', authenticate, async (req, res) => {
             {
               model: Product,
               as: 'product',
-              attributes: ['id', 'name', 'slug']
+              attributes: ['id', 'name', 'slug'],
+              required: false
             },
             {
               model: ProductVariant,
               as: 'variant',
-              attributes: ['id', 'name']
+              attributes: ['id', 'name'],
+              required: false
+            },
+            {
+              model: Hotel,
+              as: 'hotel',
+              attributes: ['id', 'name', 'slug', 'location'],
+              required: false
             }
           ]
         }
@@ -327,12 +335,20 @@ router.get('/:id', authenticate, async (req, res) => {
             {
               model: Product,
               as: 'product',
-              attributes: ['id', 'name', 'slug', 'description']
+              attributes: ['id', 'name', 'slug', 'description'],
+              required: false
             },
             {
               model: ProductVariant,
               as: 'variant',
-              attributes: ['id', 'name', 'attributes']
+              attributes: ['id', 'name', 'attributes'],
+              required: false
+            },
+            {
+              model: Hotel,
+              as: 'hotel',
+              attributes: ['id', 'name', 'slug', 'location'],
+              required: false
             }
           ]
         }

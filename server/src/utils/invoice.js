@@ -48,9 +48,33 @@ function renderInvoiceHtml(order, company = {}) {
   const createdDate = createdAt ? new Date(createdAt) : new Date();
 
   const itemRows = items.map((item, idx) => {
-    const name = escapeHtml(item.productName || item.product?.name || 'Item');
-    const variant = item.variantName || item.variant?.name;
-    const sku = item.sku || item.variant?.sku || item.product?.sku;
+    let name, details, sku;
+    
+    // Handle hotel bookings
+    if (item.itemType === 'hotel' || item.hotelName || item.hotel) {
+      name = escapeHtml(item.hotelName || item.hotel?.name || 'Hotel Booking');
+      const hotel = item.hotel || {};
+      const location = escapeHtml(item.hotelLocation || hotel.location || '');
+      const bookingDates = item.bookingDates || {};
+      const checkIn = bookingDates.checkIn ? new Date(bookingDates.checkIn).toLocaleDateString() : '';
+      const checkOut = bookingDates.checkOut ? new Date(bookingDates.checkOut).toLocaleDateString() : '';
+      const nights = bookingDates.nights || item.quantity || 0;
+      
+      details = [
+        location ? `<div>${location}</div>` : '',
+        checkIn && checkOut ? `<div>Check-in: ${checkIn} → Check-out: ${checkOut}</div>` : '',
+        nights ? `<div>${nights} ${nights === 1 ? 'night' : 'nights'}</div>` : ''
+      ].filter(Boolean).join('');
+      
+      sku = item.sku || `HOTEL-${hotel.slug || ''}`;
+    } else {
+      // Handle product items
+      name = escapeHtml(item.productName || item.product?.name || 'Item');
+      const variant = item.variantName || item.variant?.name;
+      details = variant ? `<div>${escapeHtml(variant)}</div>` : '';
+      sku = item.sku || item.variant?.sku || item.product?.sku;
+    }
+    
     const qty = Number(item.quantity || 0);
     const price = formatCurrency(item.price, currency);
     const lineTotal = formatCurrency(item.total, currency);
@@ -58,7 +82,8 @@ function renderInvoiceHtml(order, company = {}) {
       <tr>
         <td>${idx + 1}</td>
         <td>
-          <div>${name}${variant ? ` — ${escapeHtml(variant)}` : ''}</div>
+          <div>${name}</div>
+          ${details ? details : ''}
           ${sku ? `<div class="sku">SKU: ${escapeHtml(sku)}</div>` : ''}
         </td>
         <td class="num">${qty}</td>

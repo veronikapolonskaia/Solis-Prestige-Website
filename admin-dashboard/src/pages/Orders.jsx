@@ -268,6 +268,9 @@ const Orders = () => {
                 <option value="processing">Processing</option>
                 <option value="shipped">Shipped</option>
                 <option value="delivered">Delivered</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="checked_in">Checked In</option>
+                <option value="checked_out">Checked Out</option>
                 <option value="cancelled">Cancelled</option>
               </select>
             </div>
@@ -478,8 +481,24 @@ const Orders = () => {
                           </Link>
                         </div>
                         <div className="text-sm text-gray-500">
-                          {order.items?.length || 0} items
+                          {order.orderType === 'hotel' ? (
+                            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800">
+                              Hotel Booking
+                            </span>
+                          ) : (
+                            <>{order.items?.length || 0} items</>
+                          )}
                         </div>
+                        {order.orderType === 'hotel' && order.items?.[0]?.hotelName && (
+                          <div className="text-xs text-gray-400 mt-1">
+                            {order.items[0].hotelName}
+                          </div>
+                        )}
+                        {order.checkIn && order.checkOut && (
+                          <div className="text-xs text-gray-400 mt-1">
+                            {new Date(order.checkIn).toLocaleDateString()} - {new Date(order.checkOut).toLocaleDateString()}
+                          </div>
+                        )}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

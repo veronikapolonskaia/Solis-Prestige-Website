@@ -1,10 +1,12 @@
 import { X } from 'lucide-react';
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { login } from '../services/auth';
 import { useAuth } from '../context/AuthContext.jsx';
 
 const LoginModal = ({ open, onClose }) => {
+  const navigate = useNavigate();
   const dialogRef = useRef(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -47,6 +49,13 @@ const LoginModal = ({ open, onClose }) => {
               const user = await login({ email, password });
               if (setAuthFromModal) setAuthFromModal(user);
               onClose();
+              
+              // Redirect to the booking page if user was trying to book
+              const redirectUrl = localStorage.getItem('redirectAfterLogin');
+              if (redirectUrl) {
+                localStorage.removeItem('redirectAfterLogin');
+                navigate(redirectUrl);
+              }
             } catch (err) {
               const apiErr = err?.response?.data;
               let msg = apiErr?.error || 'Invalid email or password';

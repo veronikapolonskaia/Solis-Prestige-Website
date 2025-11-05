@@ -1,7 +1,10 @@
-import { useState } from 'react';
-import { register as registerUser } from '../services/auth';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
+  const navigate = useNavigate();
+  const { register } = useAuth();
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -17,8 +20,23 @@ const Register = () => {
     setSuccess('');
     setLoading(true);
     try {
-      await registerUser(form);
-      setSuccess('Account created successfully. You are now logged in.');
+      const result = await register(form);
+      if (result.success) {
+        setSuccess('Account created successfully. You are now logged in.');
+        
+        // Redirect to the booking page if user was trying to book
+        setTimeout(() => {
+          const redirectUrl = localStorage.getItem('redirectAfterLogin');
+          if (redirectUrl) {
+            localStorage.removeItem('redirectAfterLogin');
+            navigate(redirectUrl);
+          } else {
+            navigate('/');
+          }
+        }, 1500);
+      } else {
+        setError(result.error || 'Registration failed');
+      }
     } catch (err) {
       const msg = err?.response?.data?.error || 'Registration failed';
       setError(msg);

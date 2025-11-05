@@ -20,8 +20,13 @@ const Order = sequelize.define('Order', {
     allowNull: false,
     unique: true
   },
+  orderType: {
+    type: DataTypes.ENUM('product', 'hotel'),
+    defaultValue: 'product',
+    allowNull: false
+  },
   status: {
-    type: DataTypes.ENUM('pending', 'processing', 'shipped', 'delivered', 'cancelled', 'refunded'),
+    type: DataTypes.ENUM('pending', 'processing', 'shipped', 'delivered', 'cancelled', 'refunded', 'confirmed', 'checked_in', 'checked_out'),
     defaultValue: 'pending'
   },
   subtotal: {
@@ -84,9 +89,32 @@ const Order = sequelize.define('Order', {
   deliveredAt: {
     type: DataTypes.DATE,
     allowNull: true
+  },
+  // Hotel booking specific fields
+  bookingDetails: {
+    type: DataTypes.JSONB,
+    allowNull: true,
+    defaultValue: {}
+  },
+  checkIn: {
+    type: DataTypes.DATE,
+    allowNull: true
+  },
+  checkOut: {
+    type: DataTypes.DATE,
+    allowNull: true
+  },
+  numberOfGuests: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
+  specialRequests: {
+    type: DataTypes.TEXT,
+    allowNull: true
   }
 }, {
   tableName: 'orders',
+  underscored: true,
   hooks: {
     // Generate order number before validations to satisfy NOT NULL constraint
     beforeValidate: async (order) => {

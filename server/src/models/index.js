@@ -10,6 +10,7 @@ const Address = require('./Address');
 const Setting = require('./Setting');
 const Gallery = require('./Gallery');
 const Editorial = require('./Editorial');
+const Hotel = require('./Hotel');
 
 // User Associations
 User.hasMany(Order, { foreignKey: 'userId', as: 'orders' });
@@ -46,6 +47,10 @@ OrderItem.belongsTo(ProductVariant, { foreignKey: 'variantId', as: 'variant' });
 Order.hasMany(OrderItem, { foreignKey: 'orderId', as: 'items' });
 OrderItem.belongsTo(Order, { foreignKey: 'orderId', as: 'order' });
 
+// Hotel Associations
+Hotel.hasMany(OrderItem, { foreignKey: 'hotelId', as: 'orderItems' });
+OrderItem.belongsTo(Hotel, { foreignKey: 'hotelId', as: 'hotel' });
+
 // Export all models
 module.exports = {
   User,
@@ -59,5 +64,6 @@ module.exports = {
   Address,
   Setting,
   Gallery,
-  Editorial
+  Editorial,
+  Hotel
 }; 
