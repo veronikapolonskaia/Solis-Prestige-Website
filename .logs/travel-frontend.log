@@ -282,3 +282,66 @@
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
+
+> travel-frontend@0.0.0 dev
+> vite --port 5173
+
+
+  VITE v7.1.12  ready in 244 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+6:23:11 PM [vite] (client) hmr update /src/components/Layout.jsx, /src/index.css
+6:24:39 PM [vite] (client) hmr update /src/pages/Home.jsx, /src/index.css
+6:25:14 PM [vite] (client) hmr update /src/pages/Bespoke.jsx, /src/index.css
+6:26:03 PM [vite] (client) hmr update /src/pages/Membership.jsx, /src/index.css
+6:26:16 PM [vite] (client) hmr update /src/pages/Membership.jsx, /src/index.css
+6:27:13 PM [vite] (client) hmr update /src/pages/Collection.jsx, /src/index.css
+6:27:51 PM [vite] (client) hmr update /src/pages/Editorials.jsx, /src/index.css
+6:28:18 PM [vite] (client) hmr update /src/pages/Editorials.jsx, /src/index.css
+6:28:41 PM [vite] (client) hmr update /src/pages/EditorialDetail.jsx, /src/index.css
+6:29:33 PM [vite] (client) hmr update /src/pages/HotelDetail.jsx, /src/index.css
+6:30:48 PM [vite] (client) hmr update /src/pages/HotelBooking.jsx, /src/index.css
+6:31:22 PM [vite] (client) hmr update /src/pages/Register.jsx, /src/index.css
+6:31:41 PM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+6:32:03 PM [vite] (client) hmr update /src/pages/Home.jsx, /src/index.css
+6:32:08 PM [vite] (client) hmr update /src/pages/Bespoke.jsx, /src/index.css
+6:32:13 PM [vite] (client) hmr update /src/pages/Membership.jsx, /src/index.css
+6:32:47 PM [vite] (client) hmr update /src/components/Layout.jsx, /src/index.css
+6:32:47 PM [vite] (client) hmr update /src/pages/Home.jsx, /src/index.css
+6:32:47 PM [vite] (client) hmr update /src/pages/Bespoke.jsx, /src/index.css
+6:32:47 PM [vite] (client) hmr update /src/pages/Membership.jsx, /src/index.css
+6:32:47 PM [vite] (client) hmr update /src/pages/Collection.jsx, /src/index.css
+6:32:47 PM [vite] (client) hmr update /src/pages/Editorials.jsx, /src/index.css
+6:32:47 PM [vite] (client) hmr update /src/pages/EditorialDetail.jsx, /src/index.css
+6:32:47 PM [vite] (client) hmr update /src/pages/HotelDetail.jsx, /src/index.css
+6:32:47 PM [vite] (client) hmr update /src/pages/HotelBooking.jsx, /src/index.css
+6:32:47 PM [vite] (client) hmr update /src/pages/Register.jsx, /src/index.css
+6:32:47 PM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+
+> travel-frontend@0.0.0 dev
+> vite --port 5173
+
+
+  VITE v7.1.12  ready in 296 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+
+> travel-frontend@0.0.0 dev
+> vite --port 5173
+
+
+  VITE v7.1.12  ready in 313 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+
+> travel-frontend@0.0.0 dev
+> vite --host --port 5173
+
+
+  VITE v7.1.12  ready in 221 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.1.11:5173/

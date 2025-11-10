@@ -4,7 +4,7 @@ const Bespoke = () => {
   return (
     <div className="bg-white">
       {/* Hero Section with Video Background */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative flex items-center justify-center overflow-hidden pt-24 sm:pt-28 md:pt-32 min-h-[75vh] md:min-h-screen">
         {/* Video Background */}
         <video
           autoPlay
@@ -21,12 +21,12 @@ const Bespoke = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         
         {/* Content */}
-        <div className="relative z-10 text-center text-white px-6">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight flex flex-wrap items-center justify-center gap-4 md:gap-6">
+        <div className="relative z-10 text-center text-white px-4 sm:px-6">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight flex flex-wrap items-center justify-center gap-3 sm:gap-5 md:gap-6">
             <span>Travel</span>
-            <span className="text-purple-300 text-3xl md:text-4xl">✦</span>
+            <span className="text-purple-300 text-2xl sm:text-3xl md:text-4xl">✦</span>
             <span>Discover</span>
-            <span className="text-purple-300 text-3xl md:text-4xl">✦</span>
+            <span className="text-purple-300 text-2xl sm:text-3xl md:text-4xl">✦</span>
             <span>Belong</span>
           </h1>
         </div>
@@ -36,10 +36,10 @@ const Bespoke = () => {
       <section className="section-padding bg-[#f5f2ed]">
         <div className="container-custom">
           <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-6 sm:mb-8">
               Begin your next great adventure
             </h2>
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-10">
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-8 sm:mb-10 px-2 sm:px-0">
               Every memorable travel story starts at the beginning. At ASMALLWORLD Bespoke Travel, 
               we design extraordinary experiences just for you. Whether it's an impromptu luxury escape 
               or an epic global adventure, our expertise and meticulous attention to detail ensures your 
@@ -47,10 +47,10 @@ const Bespoke = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-[#1a3a52] text-white rounded-full font-semibold text-sm uppercase tracking-wider hover:bg-[#2a4a62] transition-all duration-300 shadow-lg"
+              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-3 sm:py-4 bg-[#1a3a52] text-white rounded-full font-semibold text-xs sm:text-sm uppercase tracking-wider hover:bg-[#2a4a62] transition-all duration-300 shadow-lg"
             >
               BOOK WITH US
-              <span className="text-lg">→</span>
+              <span className="text-base sm:text-lg">→</span>
             </Link>
           </div>
         </div>
@@ -60,13 +60,13 @@ const Bespoke = () => {
       <section className="section-padding bg-white">
         <div className="container-custom">
           {/* Feature 1 - Unforgettable Destinations */}
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center mb-32">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-center mb-16 md:mb-24 lg:mb-32">
             <div className="order-1 md:order-1">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-6 relative inline-block">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4 sm:mb-6 relative inline-block">
                 Unforgettable destinations, tailored to you
                 <span className="block w-24 h-1 bg-orange-400 mt-4"></span>
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed mt-8">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mt-6 sm:mt-8">
                 Discover the serenity of Greece's golden beaches, journey through 
                 the expansive Serengeti on an African safari or marvel at the icy 
                 landscapes of Antarctica, we'll design a trip to match your dream 
@@ -74,7 +74,7 @@ const Bespoke = () => {
               </p>
             </div>
             <div className="order-2 md:order-2">
-              <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl">
+              <div className="relative h-[280px] sm:h-[360px] md:h-[440px] lg:h-[500px] rounded-xl overflow-hidden shadow-2xl">
                 <img 
                   src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&auto=format&fit=crop"
                   alt="Luxury bathtub overlooking scenic landscape"
@@ -85,9 +85,9 @@ const Bespoke = () => {
           </div>
 
           {/* Feature 2 - Your Journey, Our Expertise */}
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-center">
             <div className="order-2 md:order-1">
-              <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl">
+              <div className="relative h-[280px] sm:h-[360px] md:h-[440px] lg:h-[500px] rounded-xl overflow-hidden shadow-2xl">
                 <img 
                   src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&auto=format&fit=crop"
                   alt="Ornate architectural details"
@@ -96,11 +96,11 @@ const Bespoke = () => {
               </div>
             </div>
             <div className="order-1 md:order-2">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-6 relative inline-block">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4 sm:mb-6 relative inline-block">
                 Your journey, our expertise
                 <span className="block w-24 h-1 bg-orange-400 mt-4"></span>
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed mt-8">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mt-6 sm:mt-8">
                 Our team of luxury travel experts comprises of highly experienced 
                 and knowledgeable professionals, renowned for their extensive 
                 global travels and industry expertise.
@@ -113,19 +113,19 @@ const Bespoke = () => {
       {/* Exclusive Perks Section */}
       <section className="section-padding bg-[#f5f2ed]">
         <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-center">
             <div className="order-1 md:order-1">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-6 relative inline-block">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4 sm:mb-6 relative inline-block">
                 Exclusive perks when you travel with us
                 <span className="block w-24 h-1 bg-orange-400 mt-4"></span>
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed mt-8">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mt-6 sm:mt-8">
                 Enjoy upgrades and VIP perks at thousands of top luxury hotels 
                 worldwide, thanks to our valued relationships.
               </p>
             </div>
             <div className="order-2 md:order-2">
-              <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl">
+              <div className="relative h-[280px] sm:h-[360px] md:h-[440px] lg:h-[500px] rounded-xl overflow-hidden shadow-2xl">
                 <img 
                   src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&auto=format&fit=crop"
                   alt="Colorful coastal Italian village with boats"
@@ -141,17 +141,17 @@ const Bespoke = () => {
       <section className="section-padding bg-[#1a3a52]">
         <div className="container-custom">
           <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-4 sm:mb-6">
               Let us create your perfect journey
             </h2>
-            <div className="w-24 h-1 bg-orange-400 mx-auto mb-8"></div>
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-10">
+            <div className="w-24 h-1 bg-orange-400 mx-auto mb-6 sm:mb-8"></div>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-8 sm:mb-10 px-2 sm:px-0">
               We're excited to plan your next luxury travel experience. Share your vision with us, and we'll design a 
               trip tailored just for you.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-[#c07855] text-white rounded-full font-semibold text-sm uppercase tracking-wider hover:bg-[#a86747] transition-all duration-300 shadow-lg"
+              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-3 sm:py-4 bg-[#c07855] text-white rounded-full font-semibold text-xs sm:text-sm uppercase tracking-wider hover:bg-[#a86747] transition-all duration-300 shadow-lg"
             >
               BOOK WITH US
             </Link>
@@ -163,12 +163,12 @@ const Bespoke = () => {
       <section className="section-padding bg-white">
         <div className="container-custom">
           {/* Main Heading */}
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4 sm:mb-6">
               Our partners
             </h2>
             <div className="w-24 h-1 bg-orange-400 mx-auto mb-8"></div>
-            <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto px-2 sm:px-0">
               Our extensive network includes renowned brands and global hotel properties, including being a part of a 
               continually growing list of elite Preferred Partner programmes, allowing us to offer exclusive VIP perks for 
               your stays.
@@ -176,22 +176,22 @@ const Bespoke = () => {
           </div>
 
           {/* Virtuoso Logo */}
-          <div className="flex justify-center mb-16">
+          <div className="flex justify-center mb-12 sm:mb-16">
             <img 
               src="https://dv4xo43u9eo19.cloudfront.net/assets/partners/virtuoso_member-d61cb9a6e9194addbaafccd13e3309cf0beee2defac7af0630afd790af689e10.png" 
               alt="Virtuoso Member" 
-              className="h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+              className="h-16 sm:h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300"
             />
           </div>
 
           {/* Preferred Hotel Partners */}
           <div className="pt-12">
-            <h4 className="text-2xl font-display font-bold text-gray-900 text-center mb-4">
+            <h4 className="text-xl sm:text-2xl font-display font-bold text-gray-900 text-center mb-3 sm:mb-4">
               Preferred hotel partners
             </h4>
-            <div className="w-24 h-1 bg-orange-400 mx-auto mb-8"></div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
-              <div className="flex items-center justify-center p-4">
+            <div className="w-24 h-1 bg-orange-400 mx-auto mb-6 sm:mb-8"></div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 mb-10 sm:mb-12">
+              <div className="flex items-center justify-center p-2 sm:p-4">
                 <img src="https://dv4xo43u9eo19.cloudfront.net/assets/partners/mandarin_oriental-825265f0b0c97b4cf459cbe78dd13e594592ef22ab738f2880320018355cbced.png" alt="Mandarin Oriental The Hotel Group" className="max-w-[120px] max-h-[80px] object-contain grayscale hover:grayscale-0 transition-all duration-300" />
               </div>
               <div className="flex items-center justify-center p-4">

@@ -132,10 +132,10 @@ const HotelBooking = () => {
 
   if (loading) {
     return (
-      <div className="pt-24 pb-16 bg-white">
+      <div className="pt-8 sm:pt-12 md:pt-16 pb-12 bg-white">
         <div className="container-custom">
           <div className="animate-pulse space-y-6">
-            <div className="h-96 bg-gray-200 rounded-2xl" />
+            <div className="h-64 sm:h-80 md:h-96 bg-gray-200 rounded-2xl" />
           </div>
         </div>
       </div>
@@ -144,10 +144,10 @@ const HotelBooking = () => {
 
   if (!hotel) {
     return (
-      <div className="pt-24 pb-16 bg-white">
+      <div className="pt-8 sm:pt-12 md:pt-16 pb-12 bg-white">
         <div className="container-custom">
           <div className="text-center py-12">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Hotel not found</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Hotel not found</h1>
             <Link to="/collection" className="text-purple-600 hover:text-purple-700">
               Back to Collection
             </Link>
@@ -164,14 +164,14 @@ const HotelBooking = () => {
     <div className="bg-white">
       {/* Login Required Banner */}
       {showLoginPrompt && !isAuthenticated && (
-        <section className="pt-24 pb-4 bg-yellow-50 border-b-2 border-yellow-200">
+        <section className="pt-8 sm:pt-12 pb-4 bg-yellow-50 border-b-2 border-yellow-200">
           <div className="container-custom">
-            <div className="flex items-center justify-between p-4 bg-yellow-100 rounded-lg">
-              <div className="flex items-center gap-3">
-                <Lock className="w-5 h-5 text-yellow-700" />
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 bg-yellow-100 rounded-lg">
+              <div className="flex items-start sm:items-center gap-3">
+                <Lock className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-700 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-yellow-900">Login Required</p>
-                  <p className="text-sm text-yellow-700">Please log in or create an account to complete your booking.</p>
+                  <p className="font-semibold text-yellow-900 text-sm sm:text-base">Login Required</p>
+                  <p className="text-xs sm:text-sm text-yellow-700">Please log in or create an account to complete your booking.</p>
                 </div>
               </div>
               <div className="flex gap-2">
@@ -188,7 +188,7 @@ const HotelBooking = () => {
       )}
 
       {/* Hero Section */}
-      <section className={`${showLoginPrompt && !isAuthenticated ? 'pt-8' : 'pt-24'} pb-8 bg-gradient-to-br from-purple-50 to-orange-50`}>
+      <section className="pt-8 sm:pt-12 md:pt-16 pb-8 sm:pb-10 bg-gradient-to-br from-purple-50 to-orange-50">
         <div className="container-custom">
           <Link to={`/collection/special_offers/${slug}`} className="text-purple-600 hover:text-purple-700 mb-4 inline-block">
             ← Back to hotel details
@@ -202,11 +202,11 @@ const HotelBooking = () => {
               />
             )}
             <div>
-              <h1 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-2">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900 mb-2">
                 {hotel.name}
               </h1>
-              <div className="flex items-center gap-2 text-gray-600">
-                <MapPin className="w-5 h-5" />
+              <div className="flex items-center gap-2 text-gray-600 text-sm sm:text-base">
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>{hotel.location}</span>
               </div>
             </div>
@@ -217,19 +217,19 @@ const HotelBooking = () => {
       {/* Booking Form */}
       <section className="section-padding">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Left Column - Booking Form */}
             <div className="lg:col-span-2">
-              <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">
+              <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-6 md:p-8">
+                <h2 className="text-xl sm:text-2xl font-display font-bold text-gray-900 mb-4 sm:mb-6">
                   Booking Details
                 </h2>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                   {/* Dates */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                         <Calendar className="w-4 h-4 inline mr-2" />
                         Check In *
                       </label>
@@ -240,11 +240,11 @@ const HotelBooking = () => {
                         onChange={handleChange}
                         required
                         min={new Date().toISOString().split('T')[0]}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                         <Calendar className="w-4 h-4 inline mr-2" />
                         Check Out *
                       </label>
@@ -255,7 +255,7 @@ const HotelBooking = () => {
                         onChange={handleChange}
                         required
                         min={bookingData.checkIn || new Date().toISOString().split('T')[0]}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
                       />
                     </div>
                   </div>
@@ -263,7 +263,7 @@ const HotelBooking = () => {
                   {/* Guests */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                         <Users className="w-4 h-4 inline mr-2" />
                         Adults *
                       </label>
@@ -274,11 +274,11 @@ const HotelBooking = () => {
                         onChange={handleChange}
                         required
                         min="1"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                         <Users className="w-4 h-4 inline mr-2" />
                         Children
                       </label>
@@ -288,17 +288,17 @@ const HotelBooking = () => {
                         value={bookingData.children}
                         onChange={handleChange}
                         min="0"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
                       />
                     </div>
                   </div>
 
                   {/* Guest Information */}
-                  <div className="pt-6 border-t">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Guest Information</h3>
+                  <div className="pt-5 sm:pt-6 border-t">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Guest Information</h3>
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                           Full Name *
                         </label>
                         <input
@@ -307,11 +307,11 @@ const HotelBooking = () => {
                           value={bookingData.guestName}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                           Email *
                         </label>
                         <input
@@ -320,11 +320,11 @@ const HotelBooking = () => {
                           value={bookingData.guestEmail}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                           Phone *
                         </label>
                         <input
@@ -333,11 +333,11 @@ const HotelBooking = () => {
                           value={bookingData.guestPhone}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                           Special Requests
                         </label>
                         <textarea
@@ -345,7 +345,7 @@ const HotelBooking = () => {
                           value={bookingData.specialRequests}
                           onChange={handleChange}
                           rows="4"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
                           placeholder="Any special requests or preferences..."
                         />
                       </div>
@@ -356,7 +356,7 @@ const HotelBooking = () => {
                     <div className="space-y-3">
                       <Link
                         to="/register"
-                        className="block w-full text-center px-6 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+                        className="block w-full text-center px-5 sm:px-6 py-3 sm:py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors text-sm sm:text-base"
                       >
                         Login to Book
                       </Link>
@@ -368,7 +368,7 @@ const HotelBooking = () => {
                     <button
                       type="submit"
                       disabled={submitting || !bookingData.checkIn || !bookingData.checkOut}
-                      className="w-full px-6 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full px-5 sm:px-6 py-3 sm:py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                     >
                       {submitting ? 'Processing...' : 'Complete Booking'}
                     </button>
@@ -379,41 +379,41 @@ const HotelBooking = () => {
 
             {/* Right Column - Booking Summary */}
             <div className="lg:col-span-1">
-              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 sticky top-24">
-                <h3 className="text-xl font-display font-bold text-gray-900 mb-6">
+              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-5 sm:p-6 sticky top-24">
+                <h3 className="text-lg sm:text-xl font-display font-bold text-gray-900 mb-4 sm:mb-6">
                   Booking Summary
                 </h3>
 
-                <div className="space-y-4 mb-6">
+                <div className="space-y-4 mb-5 sm:mb-6">
                   <div>
-                    <p className="text-sm text-gray-600 mb-1">Hotel</p>
-                    <p className="font-semibold text-gray-900">{hotel.name}</p>
-                    <p className="text-sm text-gray-600">{hotel.location}</p>
+                    <p className="text-xs sm:text-sm text-gray-600 mb-1">Hotel</p>
+                    <p className="font-semibold text-gray-900 text-sm sm:text-base">{hotel.name}</p>
+                    <p className="text-xs sm:text-sm text-gray-600">{hotel.location}</p>
                   </div>
 
                   {bookingData.checkIn && bookingData.checkOut && (
                     <>
                       <div className="pt-4 border-t">
-                        <p className="text-sm text-gray-600 mb-1">Check-in</p>
-                        <p className="font-semibold text-gray-900">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-1">Check-in</p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">
                           {new Date(bookingData.checkIn).toLocaleDateString()}
                         </p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Check-out</p>
-                        <p className="font-semibold text-gray-900">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-1">Check-out</p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">
                           {new Date(bookingData.checkOut).toLocaleDateString()}
                         </p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Duration</p>
-                        <p className="font-semibold text-gray-900">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-1">Duration</p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">
                           {nights} {nights === 1 ? 'Night' : 'Nights'}
                         </p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Guests</p>
-                        <p className="font-semibold text-gray-900">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-1">Guests</p>
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base">
                           {bookingData.adults} {bookingData.adults === 1 ? 'Adult' : 'Adults'}
                           {bookingData.children > 0 && `, ${bookingData.children} ${bookingData.children === 1 ? 'Child' : 'Children'}`}
                         </p>
@@ -434,11 +434,11 @@ const HotelBooking = () => {
 
                 {hotel.vipBenefits && hotel.vipBenefits.length > 0 && (
                   <div className="mb-6 p-4 bg-purple-100 rounded-lg">
-                    <p className="font-semibold text-purple-900 mb-2">VIP Benefits Included:</p>
+                    <p className="font-semibold text-purple-900 mb-2 text-sm">VIP Benefits Included:</p>
                     <ul className="space-y-1">
                       {hotel.vipBenefits.slice(0, 3).map((benefit, index) => (
-                        <li key={index} className="text-sm text-purple-700 flex items-start gap-2">
-                          <Check className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                        <li key={index} className="text-xs sm:text-sm text-purple-700 flex items-start gap-2">
+                          <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5" />
                           <span>{benefit}</span>
                         </li>
                       ))}
@@ -449,14 +449,14 @@ const HotelBooking = () => {
                 {total > 0 && (
                   <div className="pt-4 border-t">
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-600">
+                      <span className="text-xs sm:text-sm text-gray-600">
                         {nights} {nights === 1 ? 'Night' : 'Nights'} × {hotel.currency} {parseFloat(hotel.price).toLocaleString()}
                       </span>
-                      <span className="font-semibold text-gray-900">
+                      <span className="font-semibold text-gray-900 text-sm sm:text-base">
                         {hotel.currency} {total.toLocaleString()}
                       </span>
                     </div>
-                    <div className="flex justify-between items-center text-xl font-bold text-gray-900 pt-2 border-t">
+                    <div className="flex justify-between items-center text-lg sm:text-xl font-bold text-gray-900 pt-2 border-t">
                       <span>Total</span>
                       <span>{hotel.currency} {total.toLocaleString()}</span>
                     </div>

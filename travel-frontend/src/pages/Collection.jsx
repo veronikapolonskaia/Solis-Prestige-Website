@@ -99,13 +99,13 @@ const Collection = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="pt-24 md:pt-28 pb-16 bg-gradient-to-br from-purple-50 to-orange-50">
+      <section className="pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-16 bg-gradient-to-br from-purple-50 to-orange-50">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4 sm:mb-6">
               ASW Collection
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 mb-8">
+            <p className="text-base sm:text-lg md:text-2xl text-gray-700 mb-6 sm:mb-8 px-2 sm:px-0">
               Hotels we love with extraordinary benefits
             </p>
             <div className="h-1 w-24 bg-orange-400 rounded-full mx-auto" />
@@ -116,16 +116,16 @@ const Collection = () => {
       {/* VIP Benefits Section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900 mb-3 sm:mb-4">
               VIP benefits for Premium Members*
             </h2>
-            <p className="text-gray-600 mb-8">
+            <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 px-2 sm:px-0">
               Our exclusive ASMALLWORLD VIP rate offers you extraordinary benefits at no extra cost
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { icon: '🏨', title: 'Room upgrade', desc: 'to a better category' },
               { icon: '💰', title: '$100 hotel credit', desc: 'for your stay' },
@@ -134,15 +134,15 @@ const Collection = () => {
               { icon: '⏰', title: 'Early Check-In', desc: 'to start your stay early' },
               { icon: '🕐', title: 'Late Check-Out', desc: 'to extend your stay' },
             ].map((benefit, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-[#f2dfcb] to-[#e8d4bf] p-6 rounded-2xl text-center border border-[#e8d4bf]/50">
-                <div className="text-4xl mb-4">{benefit.icon}</div>
-                <h3 className="font-semibold text-gray-900 mb-1">{benefit.title}</h3>
-                <p className="text-sm text-gray-700">{benefit.desc}</p>
+              <div key={idx} className="bg-gradient-to-br from-[#f2dfcb] to-[#e8d4bf] p-5 sm:p-6 rounded-2xl text-center border border-[#e8d4bf]/50">
+                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{benefit.icon}</div>
+                <h3 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">{benefit.title}</h3>
+                <p className="text-xs sm:text-sm text-gray-700">{benefit.desc}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-sm text-gray-500 mt-8">
+          <p className="text-center text-xs sm:text-sm text-gray-500 mt-6 sm:mt-8 px-4 sm:px-0">
             *VIP benefits are available to ASMALLWORLD Premium Members. Benefits vary by hotel and may be subject to availability.
           </p>
         </div>
@@ -151,19 +151,19 @@ const Collection = () => {
       {/* Special Offers Section */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <div className="mb-10">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">Special offers</h2>
+          <div className="mb-8 sm:mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900 mb-3 sm:mb-4">Special offers</h2>
             <div className="h-1 w-24 bg-orange-400 rounded-full" />
           </div>
 
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {Array.from({ length: 6 }).map((_, i) => (
                 <div key={i} className="rounded-2xl overflow-hidden bg-gray-100 animate-pulse h-80" />
               ))}
             </div>
           ) : specialOffers.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {specialOffers.map((hotel) => (
                 <HotelCard key={hotel.id} hotel={hotel} />
               ))}
@@ -175,13 +175,13 @@ const Collection = () => {
           )}
 
           {specialOffers.length > 6 && (
-            <div className="text-center mt-10">
+            <div className="text-center mt-8 sm:mt-10">
               <Link
                 to="/collection?filter=special-offers"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full font-semibold text-sm sm:text-base hover:bg-gray-800 transition-colors"
               >
                 See all special offers
-                <span className="text-xl">→</span>
+                <span className="text-lg sm:text-xl">→</span>
               </Link>
             </div>
           )}
@@ -191,19 +191,19 @@ const Collection = () => {
       {/* Popular Hotels Section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="mb-10">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">Popular hotels</h2>
+          <div className="mb-8 sm:mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900 mb-3 sm:mb-4">Popular hotels</h2>
             <div className="h-1 w-24 bg-orange-400 rounded-full" />
           </div>
 
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {Array.from({ length: 6 }).map((_, i) => (
                 <div key={i} className="rounded-2xl overflow-hidden bg-gray-100 animate-pulse h-80" />
               ))}
             </div>
           ) : popularHotels.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {popularHotels.map((hotel) => (
                 <HotelCard key={hotel.id} hotel={hotel} />
               ))}
@@ -220,19 +220,19 @@ const Collection = () => {
       {allHotels.length > 0 && (
         <section className="section-padding bg-gray-50">
           <div className="container-custom">
-            <div className="mb-10">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">All Hotels</h2>
+            <div className="mb-8 sm:mb-10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900 mb-3 sm:mb-4">All Hotels</h2>
               <div className="h-1 w-24 bg-orange-400 rounded-full" />
             </div>
 
             {loading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 {Array.from({ length: 6 }).map((_, i) => (
                   <div key={i} className="rounded-2xl overflow-hidden bg-gray-100 animate-pulse h-80" />
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 {allHotels
                   .filter(hotel => 
                     !specialOffers.some(offer => offer.id === hotel.id) &&
@@ -257,15 +257,15 @@ const Collection = () => {
       <section className="section-padding bg-champagne">
         <div className="container-custom">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900 mb-3 sm:mb-4">
               Sign up for extraordinary benefits
             </h2>
-            <p className="text-lg text-gray-700 mb-8">
+            <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 px-2 sm:px-0">
               Enjoy the world's best hotels with our extraordinary benefits
             </p>
             <Link
               to="/register"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-gray-900 text-white rounded-full font-semibold text-lg hover:bg-gray-800 transition-all duration-300 shadow-lg"
+              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-3 sm:py-4 bg-gray-900 text-white rounded-full font-semibold text-sm sm:text-lg hover:bg-gray-800 transition-all duration-300 shadow-lg"
             >
               Create Your Account
             </Link>

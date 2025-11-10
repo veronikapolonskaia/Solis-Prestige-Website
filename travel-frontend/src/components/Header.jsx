@@ -89,13 +89,13 @@ const Header = () => {
       }`}
     >
       <nav className="container-custom">
-        <div className="flex justify-between items-center h-24">
+        <div className="flex justify-between items-center h-20 md:h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img 
-              src="/SOLIS_Logo.png" 
-              alt="SOLIS" 
-              className="h-20 md:h-24 w-auto transition-all duration-300"
+            <img
+              src="/SOLIS_Logo.png"
+              alt="SOLIS"
+              className="h-16 sm:h-20 md:h-24 w-auto transition-all duration-300"
             />
           </Link>
 

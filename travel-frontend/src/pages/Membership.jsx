@@ -125,7 +125,7 @@ const Membership = () => {
   return (
     <div className="bg-gray-50">
       {/* Hero Section with Background Image */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative flex items-center justify-center overflow-hidden pt-24 sm:pt-28 md:pt-32 min-h-[60vh]">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -134,39 +134,39 @@ const Membership = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-transparent"></div>
         </div>
-        <div className="relative z-10 text-center text-white px-6">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight">
+        <div className="relative z-10 text-center text-white px-4 sm:px-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight">
             Membership Options
           </h1>
         </div>
       </section>
 
       {/* Membership Cards Section - Overlapping Hero */}
-      <section className="relative -mt-48 pb-20">
+      <section className="relative -mt-32 sm:-mt-40 md:-mt-48 pb-16 sm:pb-20">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {membershipTiers.map((tier, index) => (
               <div 
                 key={tier.name}
-                className="group bg-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col hover:-translate-y-2 hover:bg-gradient-to-br hover:from-[#1a3a52] hover:to-[#2a5570]"
+                className="group bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col hover:-translate-y-2 hover:bg-gradient-to-br hover:from-[#1a3a52] hover:to-[#2a5570]"
               >
                 {/* Card Header */}
-                <div className="p-6 text-center border-b border-gray-100 group-hover:border-white/20 transition-colors duration-500">
-                  <h3 className="text-2xl font-display font-bold text-gray-900 mb-2 group-hover:text-white transition-colors duration-500">
+                <div className="p-6 sm:p-7 text-center border-b border-gray-100 group-hover:border-white/20 transition-colors duration-500">
+                  <h3 className="text-xl sm:text-2xl font-display font-bold text-gray-900 mb-2 group-hover:text-white transition-colors duration-500">
                     {tier.name}
                   </h3>
-                  <p className="text-xs text-gray-600 leading-relaxed group-hover:text-gray-200 transition-colors duration-500">
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed group-hover:text-gray-200 transition-colors duration-500">
                     {tier.subtitle}
                   </p>
                 </div>
 
                 {/* Features List */}
-                <div className="p-6 flex-grow">
+                <div className="p-6 sm:p-7 flex-grow">
                   <ul className="space-y-3">
                     {tier.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <Check className="w-4 h-4 text-[#1a3a52] group-hover:text-white flex-shrink-0 mt-0.5 transition-colors duration-500" />
-                        <span className="text-xs text-gray-700 leading-relaxed group-hover:text-gray-100 transition-colors duration-500">
+                        <span className="text-xs sm:text-sm text-gray-700 leading-relaxed group-hover:text-gray-100 transition-colors duration-500">
                           {feature}
                         </span>
                       </li>
@@ -175,23 +175,23 @@ const Membership = () => {
                 </div>
 
                 {/* Pricing & CTA */}
-                <div className="p-6 pt-0 mt-auto">
+                <div className="p-6 sm:p-7 pt-0 sm:pt-0 mt-auto">
                   {tier.priceLabel && (
-                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-2 group-hover:text-gray-300 transition-colors duration-500">
+                    <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider mb-2 group-hover:text-gray-300 transition-colors duration-500">
                       {tier.priceLabel}
                     </p>
                   )}
                   <div className="flex items-end gap-1 mb-4">
-                    <span className="text-3xl font-bold text-gray-900 group-hover:text-white transition-colors duration-500">
+                    <span className="text-2xl sm:text-3xl font-bold text-gray-900 group-hover:text-white transition-colors duration-500">
                       {tier.price}
                     </span>
-                    <span className="text-sm text-gray-500 pb-1 group-hover:text-gray-300 transition-colors duration-500">
+                    <span className="text-xs sm:text-sm text-gray-500 pb-1 group-hover:text-gray-300 transition-colors duration-500">
                       {tier.period}
                     </span>
                   </div>
                   <Link
                     to="/register"
-                    className="block w-full text-center px-6 py-3 bg-[#1a3a52] text-white rounded-full font-semibold text-xs uppercase tracking-wider hover:bg-white hover:text-[#1a3a52] transition-all duration-300 group-hover:bg-white group-hover:text-[#1a3a52]"
+                    className="block w-full text-center px-5 sm:px-6 py-3 bg-[#1a3a52] text-white rounded-full font-semibold text-xs uppercase tracking-wider hover:bg-white hover:text-[#1a3a52] transition-all duration-300 group-hover:bg-white group-hover:text-[#1a3a52]"
                   >
                     SELECT MEMBERSHIP
                   </Link>
@@ -203,75 +203,75 @@ const Membership = () => {
       </section>
 
       {/* Privilege Partners Carousel */}
-      <section className="bg-white py-16 shadow-lg">
+      <section className="bg-white py-14 sm:py-16 shadow-lg">
         <div className="container-custom text-center">
-          <p className="text-lg text-gray-600 mb-3">
+          <p className="text-base sm:text-lg text-gray-600 mb-2 sm:mb-3">
             Selection of our
           </p>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 mb-8 sm:mb-12">
             Privilege partners
           </h2>
 
           {/* Scrolling Carousel */}
           <div className="relative overflow-hidden">
             {/* Gradient Overlays */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+            <div className="hidden sm:block absolute left-0 top-0 bottom-0 w-24 md:w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+            <div className="hidden sm:block absolute right-0 top-0 bottom-0 w-24 md:w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
             
             {/* Scrolling Container */}
             <div className="flex animate-scroll">
               {/* First Set of Logos */}
-              <div className="flex items-center gap-16 px-8">
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+              <div className="flex items-center gap-10 sm:gap-16 px-6 sm:px-8">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/partner_of_miles_and_more-571d77ee988aab85dcce3cd3f58bfcfbf63103d75d9e0639dd220129e800b697.svg" 
                     alt="Miles & More Partner" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/emirates_skywards-b16353fd2836b6c7254d8ff5fa8d9ea716ca83c483906a7aad1bb95f99f799f3.svg" 
                     alt="Emirates Skywards" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/gha_discovery-4e227406199961d6887f0b0273cc173c7f786a7c761c70c02c7dcc3563874586.svg" 
                     alt="GHA Discovery" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/priority_pass-b3ea9d433f202d42ecaea9f79c4a410d2eb7c69fa369752bf15c9d6ec87aa434.svg" 
                     alt="Priority Pass" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/sixt-27998ecd046dac8e1c95236e3d5d37274d2c6c27b351142631ab3446ba8e0853.svg" 
                     alt="SIXT" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/jumeirah-48e9fc7e2c2a94fb929876b6e122041f394d03197c94e7f7c2b0461a86bc2d7b.svg" 
                     alt="Jumeirah" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/tsa_precheck-5a6fcd30c8529821fd0201f9671d4c56448c0cf7e1b2df4272a7a82284444b47.svg" 
                     alt="TSA PreCheck" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/wfc-e975f6c5b18313787447f52a5e9a4f1c00ce2901a0bd0ab21c84cb85ac958de8.svg" 
                     alt="World's Finest Clubs" 
@@ -281,57 +281,57 @@ const Membership = () => {
               </div>
               
               {/* Duplicate Set for Seamless Loop */}
-              <div className="flex items-center gap-16 px-8" aria-hidden="true">
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+              <div className="flex items-center gap-10 sm:gap-16 px-6 sm:px-8" aria-hidden="true">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/partner_of_miles_and_more-571d77ee988aab85dcce3cd3f58bfcfbf63103d75d9e0639dd220129e800b697.svg" 
                     alt="Miles & More Partner" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/emirates_skywards-b16353fd2836b6c7254d8ff5fa8d9ea716ca83c483906a7aad1bb95f99f799f3.svg" 
                     alt="Emirates Skywards" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/gha_discovery-4e227406199961d6887f0b0273cc173c7f786a7c761c70c02c7dcc3563874586.svg" 
                     alt="GHA Discovery" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/priority_pass-b3ea9d433f202d42ecaea9f79c4a410d2eb7c69fa369752bf15c9d6ec87aa434.svg" 
                     alt="Priority Pass" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/sixt-27998ecd046dac8e1c95236e3d5d37274d2c6c27b351142631ab3446ba8e0853.svg" 
                     alt="SIXT" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/jumeirah-48e9fc7e2c2a94fb929876b6e122041f394d03197c94e7f7c2b0461a86bc2d7b.svg" 
                     alt="Jumeirah" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/tsa_precheck-5a6fcd30c8529821fd0201f9671d4c56448c0cf7e1b2df4272a7a82284444b47.svg" 
                     alt="TSA PreCheck" 
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="flex items-center justify-center min-w-[180px] h-20">
+                <div className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] h-16 sm:h-20">
                   <img 
                     src="https://dv4xo43u9eo19.cloudfront.net/assets/membership/logos/wfc-e975f6c5b18313787447f52a5e9a4f1c00ce2901a0bd0ab21c84cb85ac958de8.svg" 
                     alt="World's Finest Clubs" 
@@ -347,26 +347,26 @@ const Membership = () => {
       {/* FAQ Section */}
       <section id="faq" className="py-16 bg-white">
         <div className="container-custom max-w-4xl mx-auto">
-          <p className="text-lg text-center text-gray-600 pt-4 mb-3">Find out more</p>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-center text-gray-900 mb-6">
+          <p className="text-base sm:text-lg text-center text-gray-600 pt-2 sm:pt-4 mb-2 sm:mb-3">Find out more</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-center text-gray-900 mb-5 sm:mb-6">
             Frequently asked questions
           </h2>
 
           <div className="divide-y divide-gray-200">
             {faqItems.map((item, idx) => (
-              <details key={idx} className="group py-4 my-1">
-                <summary className="list-none cursor-pointer select-none flex items-start justify-between gap-6 pb-2 pt-1">
-                  <span className="text-lg font-semibold text-[#1a3a52]">
+              <details key={idx} className="group py-3 sm:py-4 my-1">
+                <summary className="list-none cursor-pointer select-none flex items-start justify-between gap-4 sm:gap-6 pb-2 pt-1">
+                  <span className="text-base sm:text-lg font-semibold text-[#1a3a52]">
                     {item.q}
                   </span>
                   <span className="mt-1 shrink-0 text-[#1a3a52] group-open:hidden">
-                    <Plus className="w-5 h-5" />
+                    <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
                   </span>
                   <span className="mt-1 shrink-0 text-[#1a3a52] hidden group-open:block">
-                    <Minus className="w-5 h-5" />
+                    <Minus className="w-4 h-4 sm:w-5 sm:h-5" />
                   </span>
                 </summary>
-                <div className="text-gray-700 leading-relaxed">
+                <div className="text-sm sm:text-base text-gray-700 leading-relaxed">
                   {item.a}
                 </div>
               </details>
@@ -377,8 +377,8 @@ const Membership = () => {
 
       {/* Contact Us Hero */}
       <section id="contact-us" className="relative w-full overflow-hidden">
-        {/* 4:1 ratio container */}
-        <div className="relative w-full" style={{ paddingTop: '25%' }}>
+        {/* Responsive ratio container */}
+        <div className="relative w-full min-h-[260px] md:min-h-0" style={{ paddingTop: '45%', maxHeight: '420px' }}>
           <img
             loading="lazy"
             alt="Contact Us"
@@ -387,15 +387,15 @@ const Membership = () => {
           />
           {/* Overlay */}
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white bg-black/30">
-            <p className="text-3xl md:text-5xl font-bold mb-4 drop-shadow">
+            <p className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 drop-shadow">
               Have a question?
             </p>
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 drop-shadow-lg">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display font-bold mb-6 sm:mb-8 drop-shadow-lg">
               Contact Us
             </h2>
             <a
               href="mailto:support@asw.com"
-              className="inline-flex items-center px-8 py-3 rounded-full bg-white/90 text-[#1a3a52] font-semibold tracking-wide hover:bg-white transition-colors"
+              className="inline-flex items-center px-6 sm:px-8 py-3 rounded-full bg-white/90 text-[#1a3a52] font-semibold tracking-wide hover:bg-white transition-colors"
             >
               <span className="mr-3 inline-block">
                 {/* simple mail icon using emoji fallback to avoid asset dependency */}

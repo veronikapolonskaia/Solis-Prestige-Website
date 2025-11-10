@@ -72,7 +72,7 @@ start_frontend() {
   echo "Starting travel-frontend (Vite) on :$FRONTEND_PORT ..."
   (
     cd "$ROOT_DIR/travel-frontend"
-    npm run dev -- --port "$FRONTEND_PORT"
+    npm run dev -- --host --port "$FRONTEND_PORT"
   ) >>"$LOG_DIR/travel-frontend.log" 2>&1 &
   PIDS+=("$!")
   echo "travel-frontend pid: $! (logs: $LOG_DIR/travel-frontend.log)"

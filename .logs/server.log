@@ -4407,7 +4407,8 @@ Executing (default): SELECT "id", "email", "password", "first_name" AS "firstNam
 Executing (default): SELECT "Order"."id", "Order"."user_id" AS "userId", "Order"."order_number" AS "orderNumber", "Order"."order_type" AS "orderType", "Order"."status", "Order"."subtotal", "Order"."tax_amount" AS "taxAmount", "Order"."shipping_amount" AS "shippingAmount", "Order"."discount_amount" AS "discountAmount", "Order"."total", "Order"."currency", "Order"."payment_status" AS "paymentStatus", "Order"."payment_method" AS "paymentMethod", "Order"."shipping_address" AS "shippingAddress", "Order"."billing_address" AS "billingAddress", "Order"."notes", "Order"."tracking_number" AS "trackingNumber", "Order"."shipped_at" AS "shippedAt", "Order"."delivered_at" AS "deliveredAt", "Order"."booking_details" AS "bookingDetails", "Order"."check_in" AS "checkIn", "Order"."check_out" AS "checkOut", "Order"."number_of_guests" AS "numberOfGuests", "Order"."special_requests" AS "specialRequests", "Order"."created_at" AS "createdAt", "Order"."updated_at" AS "updatedAt", "user"."id" AS "user.id", "user"."first_name" AS "user.firstName", "user"."last_name" AS "user.lastName", "user"."email" AS "user.email", "items"."id" AS "items.id", "items"."order_id" AS "items.orderId", "items"."item_type" AS "items.itemType", "items"."product_id" AS "items.productId", "items"."hotel_id" AS "items.hotelId", "items"."variant_id" AS "items.variantId", "items"."quantity" AS "items.quantity", "items"."price" AS "items.price", "items"."total" AS "items.total", "items"."product_name" AS "items.productName", "items"."variant_name" AS "items.variantName", "items"."sku" AS "items.sku", "items"."weight" AS "items.weight", "items"."attributes" AS "items.attributes", "items"."hotel_name" AS "items.hotelName", "items"."hotel_location" AS "items.hotelLocation", "items"."booking_dates" AS "items.bookingDates", "items"."created_at" AS "items.createdAt", "items"."updated_at" AS "items.updatedAt" FROM "orders" AS "Order" LEFT OUTER JOIN "users" AS "user" ON "Order"."user_id" = "user"."id" LEFT OUTER JOIN "order_items" AS "items" ON "Order"."id" = "items"."order_id" WHERE "Order"."id" = '37a79bf7-0381-4de3-8fa8-9d186dbd5e70';
 Logo not found, using text fallback
 [0mGET /api/orders/37a79bf7-0381-4de3-8fa8-9d186dbd5e70/invoice.pdf [32m200[0m 1415.263 ms - 164298[0m
-y","price","total","product_name","variant_name","sku","weight","attributes","hotel_name","hotel_location","booking_dates","created_at","updated_at";',
+SIGTERM received, shutting down gracefully
+name","sku","weight","attributes","hotel_name","hotel_location","booking_dates","created_at","updated_at";',
     parameters: [
       '7f03f8e5-4bae-4b38-a12b-909c4449de5a',
       'c6ce96e6-b186-44a9-8008-dde54a621801',
@@ -4810,3 +4811,115 @@ Emitted 'error' event on Server instance at:
 
 Node.js v20.19.5
 [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting child process[39m
+[32m[nodemon] starting `node server.js`[39m
+[dotenv@17.2.1] injecting env (28) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+node:events:502
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::5000
+    at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+    at listenInCluster (node:net:1965:12)
+    at Server.listen (node:net:2067:7)
+    at Function.listen (/home/huraira/Projects/Travel_App/ecommerce-backend-admin-PERN-main/server/node_modules/express/lib/application.js:635:24)
+    at Object.<anonymous> (/home/huraira/Projects/Travel_App/ecommerce-backend-admin-PERN-main/server/server.js:5:5)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1944:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 5000
+}
+
+Node.js v20.19.5
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+
+> server@1.0.0 dev
+> nodemon server.js
+
+[33m[nodemon] 3.1.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+[dotenv@17.2.1] injecting env (28) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+[dotenv@17.2.1] injecting env (0) from .env -- tip: ⚙️  override existing env vars with { override: true }
+🚀 Ecommerce API server running on port 5000
+📊 Environment: development
+🔗 API Base URL: http://localhost:5000
+🏥 Health Check: http://localhost:5000/health
+📚 API Documentation: http://localhost:5000/api/docs
+Executing (default): SELECT 1+1 AS result
+Database connection has been established successfully.
+Database initialized successfully
+[0mGET /api/auth/me [33m401[0m 3.976 ms - 42[0m
+[0mGET /api/auth/me [33m401[0m 1.224 ms - 42[0m
+SIGINT received, shutting down gracefully
+
+> server@1.0.0 dev
+> nodemon server.js
+
+[33m[nodemon] 3.1.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+[dotenv@17.2.1] injecting env (28) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+[dotenv@17.2.1] injecting env (0) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+🚀 Ecommerce API server running on port 5000
+📊 Environment: development
+🔗 API Base URL: http://localhost:5000
+🏥 Health Check: http://localhost:5000/health
+📚 API Documentation: http://localhost:5000/api/docs
+Executing (default): SELECT 1+1 AS result
+Database connection has been established successfully.
+Database initialized successfully
+SIGINT received, shutting down gracefully
+
+> server@1.0.0 dev
+> nodemon server.js
+
+[33m[nodemon] 3.1.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+[dotenv@17.2.1] injecting env (28) from .env -- tip: 📡 observe env with Radar: https://dotenvx.com/radar
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 📡 version env with Radar: https://dotenvx.com/radar
+🚀 Ecommerce API server running on port 5000
+📊 Environment: development
+🔗 API Base URL: http://localhost:5000
+🏥 Health Check: http://localhost:5000/health
+📚 API Documentation: http://localhost:5000/api/docs
+Executing (default): SELECT 1+1 AS result
+Database connection has been established successfully.
+Database initialized successfully
+SIGINT received, shutting down gracefully
+
+> server@1.0.0 dev
+> nodemon server.js
+
+[33m[nodemon] 3.1.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+[dotenv@17.2.1] injecting env (28) from .env -- tip: 📡 version env with Radar: https://dotenvx.com/radar
+[dotenv@17.2.1] injecting env (0) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+🚀 Ecommerce API server running on port 5000
+📊 Environment: development
+🔗 API Base URL: http://localhost:5000
+🏥 Health Check: http://localhost:5000/health
+📚 API Documentation: http://localhost:5000/api/docs
+Executing (default): SELECT 1+1 AS result
+Database connection has been established successfully.
+Database initialized successfully

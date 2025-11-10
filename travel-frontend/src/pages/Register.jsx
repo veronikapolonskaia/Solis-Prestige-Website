@@ -46,12 +46,12 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-20 bg-white">
+    <div className="min-h-screen pt-8 sm:pt-12 md:pt-16 pb-16 sm:pb-20 bg-white">
       <div className="container-custom">
-        <div className="mx-auto max-w-2xl bg-white rounded-2xl shadow-2xl p-8">
-          <h1 className="text-3xl md:text-4xl font-display font-bold text-center text-gray-900">Create account</h1>
+        <div className="mx-auto max-w-2xl bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-center text-gray-900">Create account</h1>
           <div className="h-1 w-16 bg-orange-400 mx-auto my-4 rounded-full" />
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-4 sm:mt-6">
             <input
               name="firstName"
               placeholder="First Name"
@@ -94,7 +94,7 @@ const Register = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`px-8 py-3.5 rounded-full font-semibold text-base md:text-lg transition-all duration-300 ${
+                className={`px-6 sm:px-8 py-3.5 rounded-full font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 ${
                   loading ? 'bg-gray-400 cursor-not-allowed text-white' : 'bg-[#1a3a52] hover:bg-[#2a4a62] text-white'
                 }`}
               >
