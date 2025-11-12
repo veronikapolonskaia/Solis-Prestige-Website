@@ -4923,3 +4923,88 @@ SIGINT received, shutting down gracefully
 Executing (default): SELECT 1+1 AS result
 Database connection has been established successfully.
 Database initialized successfully
+[32m[nodemon] restarting child process[39m
+[32m[nodemon] starting `node server.js`[39m
+[dotenv@17.2.1] injecting env (28) from .env -- tip: 📡 observe env with Radar: https://dotenvx.com/radar
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 📡 observe env with Radar: https://dotenvx.com/radar
+🚀 Ecommerce API server running on port 5000
+📊 Environment: development
+🔗 API Base URL: http://localhost:5000
+🏥 Health Check: http://localhost:5000/health
+📚 API Documentation: http://localhost:5000/api/docs
+Executing (default): SELECT 1+1 AS result
+Database connection has been established successfully.
+Database initialized successfully
+SIGTERM received, shutting down gracefully
+
+> server@1.0.0 dev
+> nodemon server.js
+
+[33m[nodemon] 3.1.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+[dotenv@17.2.1] injecting env (28) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+🚀 Ecommerce API server running on port 5000
+📊 Environment: development
+🔗 API Base URL: http://localhost:5000
+🏥 Health Check: http://localhost:5000/health
+📚 API Documentation: http://localhost:5000/api/docs
+Executing (default): SELECT 1+1 AS result
+Database connection has been established successfully.
+Database initialized successfully
+Executing (default): SELECT "id", "name", "slug", "location", "city", "country", "description", "short_description" AS "shortDescription", "images", "main_image" AS "mainImage", "special_offer" AS "specialOffer", "offer_title" AS "offerTitle", "offer_details" AS "offerDetails", "offer_valid_until" AS "offerValidUntil", "offer_booking_deadline" AS "offerBookingDeadline", "offer_blackout_dates" AS "offerBlackoutDates", "price", "currency", "vip_benefits" AS "vipBenefits", "hotel_details" AS "hotelDetails", "featured", "popular", "display_order" AS "displayOrder", "is_active" AS "isActive", "meta_title" AS "metaTitle", "meta_description" AS "metaDescription", "created_at" AS "createdAt", "updated_at" AS "updatedAt" FROM "hotels" AS "Hotel" WHERE "Hotel"."is_active" = true AND "Hotel"."special_offer" = true AND "Hotel"."offer_valid_until" >= '2025-11-11 12:44:50.109 +00:00' ORDER BY "displayOrder" ASC, "createdAt" DESC;
+Executing (default): SELECT "id", "name", "slug", "location", "city", "country", "description", "short_description" AS "shortDescription", "images", "main_image" AS "mainImage", "special_offer" AS "specialOffer", "offer_title" AS "offerTitle", "offer_details" AS "offerDetails", "offer_valid_until" AS "offerValidUntil", "offer_booking_deadline" AS "offerBookingDeadline", "offer_blackout_dates" AS "offerBlackoutDates", "price", "currency", "vip_benefits" AS "vipBenefits", "hotel_details" AS "hotelDetails", "featured", "popular", "display_order" AS "displayOrder", "is_active" AS "isActive", "meta_title" AS "metaTitle", "meta_description" AS "metaDescription", "created_at" AS "createdAt", "updated_at" AS "updatedAt" FROM "hotels" AS "Hotel" WHERE "Hotel"."popular" = true AND "Hotel"."is_active" = true ORDER BY "displayOrder" ASC, "createdAt" DESC LIMIT 12;
+Executing (default): SELECT count(DISTINCT("id")) AS "count" FROM "hotels" AS "Hotel" WHERE "Hotel"."is_active" = true;
+Executing (default): SELECT "id", "name", "slug", "location", "city", "country", "description", "short_description" AS "shortDescription", "images", "main_image" AS "mainImage", "special_offer" AS "specialOffer", "offer_title" AS "offerTitle", "offer_details" AS "offerDetails", "offer_valid_until" AS "offerValidUntil", "offer_booking_deadline" AS "offerBookingDeadline", "offer_blackout_dates" AS "offerBlackoutDates", "price", "currency", "vip_benefits" AS "vipBenefits", "hotel_details" AS "hotelDetails", "featured", "popular", "display_order" AS "displayOrder", "is_active" AS "isActive", "meta_title" AS "metaTitle", "meta_description" AS "metaDescription", "created_at" AS "createdAt", "updated_at" AS "updatedAt" FROM "hotels" AS "Hotel" WHERE "Hotel"."is_active" = true ORDER BY "displayOrder" ASC, "createdAt" DESC LIMIT 50 OFFSET 0;
+[0mGET /api/hotels/popular [36m304[0m 61.294 ms - -[0m
+[0mGET /api/hotels?limit=50 [36m304[0m 68.802 ms - -[0m
+[0mGET /api/hotels/special-offers [36m304[0m 97.197 ms - -[0m
+Executing (default): SELECT "id", "name", "slug", "location", "city", "country", "description", "short_description" AS "shortDescription", "images", "main_image" AS "mainImage", "special_offer" AS "specialOffer", "offer_title" AS "offerTitle", "offer_details" AS "offerDetails", "offer_valid_until" AS "offerValidUntil", "offer_booking_deadline" AS "offerBookingDeadline", "offer_blackout_dates" AS "offerBlackoutDates", "price", "currency", "vip_benefits" AS "vipBenefits", "hotel_details" AS "hotelDetails", "featured", "popular", "display_order" AS "displayOrder", "is_active" AS "isActive", "meta_title" AS "metaTitle", "meta_description" AS "metaDescription", "created_at" AS "createdAt", "updated_at" AS "updatedAt" FROM "hotels" AS "Hotel" WHERE "Hotel"."popular" = true AND "Hotel"."is_active" = true ORDER BY "displayOrder" ASC, "createdAt" DESC LIMIT 12;
+Executing (default): SELECT count(DISTINCT("id")) AS "count" FROM "hotels" AS "Hotel" WHERE "Hotel"."is_active" = true;
+Executing (default): SELECT "id", "name", "slug", "location", "city", "country", "description", "short_description" AS "shortDescription", "images", "main_image" AS "mainImage", "special_offer" AS "specialOffer", "offer_title" AS "offerTitle", "offer_details" AS "offerDetails", "offer_valid_until" AS "offerValidUntil", "offer_booking_deadline" AS "offerBookingDeadline", "offer_blackout_dates" AS "offerBlackoutDates", "price", "currency", "vip_benefits" AS "vipBenefits", "hotel_details" AS "hotelDetails", "featured", "popular", "display_order" AS "displayOrder", "is_active" AS "isActive", "meta_title" AS "metaTitle", "meta_description" AS "metaDescription", "created_at" AS "createdAt", "updated_at" AS "updatedAt" FROM "hotels" AS "Hotel" WHERE "Hotel"."is_active" = true ORDER BY "displayOrder" ASC, "createdAt" DESC LIMIT 50 OFFSET 0;
+Executing (default): SELECT "id", "name", "slug", "location", "city", "country", "description", "short_description" AS "shortDescription", "images", "main_image" AS "mainImage", "special_offer" AS "specialOffer", "offer_title" AS "offerTitle", "offer_details" AS "offerDetails", "offer_valid_until" AS "offerValidUntil", "offer_booking_deadline" AS "offerBookingDeadline", "offer_blackout_dates" AS "offerBlackoutDates", "price", "currency", "vip_benefits" AS "vipBenefits", "hotel_details" AS "hotelDetails", "featured", "popular", "display_order" AS "displayOrder", "is_active" AS "isActive", "meta_title" AS "metaTitle", "meta_description" AS "metaDescription", "created_at" AS "createdAt", "updated_at" AS "updatedAt" FROM "hotels" AS "Hotel" WHERE "Hotel"."is_active" = true AND "Hotel"."special_offer" = true AND "Hotel"."offer_valid_until" >= '2025-11-11 12:44:50.222 +00:00' ORDER BY "displayOrder" ASC, "createdAt" DESC;
+[0mGET /api/hotels/popular [36m304[0m 19.073 ms - -[0m
+[0mGET /api/hotels?limit=50 [36m304[0m 15.658 ms - -[0m
+[0mGET /api/hotels/special-offers [36m304[0m 10.098 ms - -[0m
+Executing (default): SELECT count(*) AS "count" FROM "editorials" AS "Editorial" WHERE "Editorial"."status" = 'published';
+Executing (default): SELECT "id", "title", "slug", "excerpt", "hero_url" AS "heroUrl", "hero_type" AS "heroType", "author", "published_at" AS "publishedAt", "tags" FROM "editorials" AS "Editorial" WHERE "Editorial"."status" = 'published' ORDER BY "publishedAt" DESC LIMIT 12 OFFSET 0;
+[0mGET /api/editorials?page=1&limit=12 [36m304[0m 31.956 ms - -[0m
+Executing (default): SELECT count(*) AS "count" FROM "editorials" AS "Editorial" WHERE "Editorial"."status" = 'published';
+Executing (default): SELECT "id", "title", "slug", "excerpt", "hero_url" AS "heroUrl", "hero_type" AS "heroType", "author", "published_at" AS "publishedAt", "tags" FROM "editorials" AS "Editorial" WHERE "Editorial"."status" = 'published' ORDER BY "publishedAt" DESC LIMIT 12 OFFSET 0;
+[0mGET /api/editorials?page=1&limit=12 [36m304[0m 6.352 ms - -[0m
+[0mGET /uploads/1761894492393-7iy07i.mp4 [32m206[0m 8.949 ms - 6458222[0m
+[32m[nodemon] restarting child process[39m
+[32m[nodemon] starting `node server.js`[39m
+[dotenv@17.2.1] injecting env (28) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+🚀 Ecommerce API server running on port 5000
+📊 Environment: development
+🔗 API Base URL: http://localhost:5000
+🏥 Health Check: http://localhost:5000/health
+📚 API Documentation: http://localhost:5000/api/docs
+Executing (default): SELECT 1+1 AS result
+Database connection has been established successfully.
+Database initialized successfully
+SIGTERM received, shutting down gracefully
+
+> server@1.0.0 dev
+> nodemon server.js
+
+[33m[nodemon] 3.1.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+[dotenv@17.2.1] injecting env (28) from .env -- tip: ⚙️  override existing env vars with { override: true }
+[dotenv@17.2.1] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+🚀 Ecommerce API server running on port 5000
+📊 Environment: development
+🔗 API Base URL: http://localhost:5000
+🏥 Health Check: http://localhost:5000/health
+📚 API Documentation: http://localhost:5000/api/docs
+Executing (default): SELECT 1+1 AS result
+Database connection has been established successfully.
+Database initialized successfully

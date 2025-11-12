@@ -345,3 +345,21 @@
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: http://192.168.1.11:5173/
+
+> travel-frontend@0.0.0 dev
+> vite --host --port 5173
+
+
+  VITE v7.1.12  ready in 530 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.1.11:5173/
+
+> travel-frontend@0.0.0 dev
+> vite --host --port 5173
+
+
+  VITE v7.1.12  ready in 264 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.1.67:5173/

@@ -81,22 +81,22 @@ const Header = () => {
 
   return (
     <header
-      style={{
-        backgroundColor: isScrolled ? '#ffffff' : 'transparent'
-      }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'shadow-md' : 'backdrop-blur-sm'
+        isScrolled ? 'bg-white shadow-md' : 'bg-brandPurple/70 backdrop-blur-sm'
       }`}
     >
       <nav className="container-custom">
         <div className="flex justify-between items-center h-20 md:h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img
-              src="/SOLIS_Logo.png"
-              alt="SOLIS"
-              className="h-16 sm:h-20 md:h-24 w-auto transition-all duration-300"
-            />
+            <div className="flex flex-col leading-tight">
+              <div className={`font-display tracking-logo ${isScrolled ? 'text-brandPurple' : 'text-brandGold'} text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase`}>
+                SOLIS
+              </div>
+              <div className={`uppercase ${isScrolled ? 'text-brandGold' : 'text-brandGold'} text-[9px] sm:text-[10px] md:text-xs lg:text-sm tracking-tagline font-normal mt-0.5`}>
+                PRESTIGE TRAVEL CLUB
+              </div>
+            </div>
           </Link>
 
           {/* Desktop Navigation - Centered */}
@@ -105,8 +105,8 @@ const Header = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`nav-link relative hover:text-purple-600 transition-colors font-semibold text-lg md:text-xl tracking-wider ${
-                  isScrolled ? 'text-gray-700' : 'text-white'
+                className={`nav-link relative hover:text-brandGold transition-colors font-semibold text-lg md:text-xl tracking-wider ${
+                  isScrolled ? 'text-brandPurple' : 'text-white'
                 }`}
               >
                 {link.name}
@@ -118,7 +118,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-6">
             {isAuthenticated ? (
               <>
-                <div className={`flex items-center gap-2 font-semibold text-lg md:text-xl ${isScrolled ? 'text-gray-700' : 'text-white'}`}>
+                <div className={`flex items-center gap-2 font-semibold text-lg md:text-xl ${isScrolled ? 'text-brandPurple' : 'text-white'}`}>
                   <User2 className="w-6 h-6" />
                   <span>{user?.firstName || 'Account'}</span>
                 </div>
@@ -126,7 +126,7 @@ const Header = () => {
                   onClick={logout}
                   className={`px-6 py-3 rounded-full font-semibold text-base md:text-lg transition-all duration-300 ${
                     isScrolled
-                      ? 'bg-gray-900 text-white hover:bg-black'
+                      ? 'bg-brandPurple text-white hover:brightness-110'
                       : 'bg-white/10 text-white hover:bg-white/20'
                   }`}
                 >
@@ -138,8 +138,8 @@ const Header = () => {
                 <a
                   href="#login"
                   onClick={openLogin}
-                  className={`hover:text-purple-600 transition-colors font-semibold text-lg md:text-xl ${
-                    isScrolled ? 'text-gray-700' : 'text-white'
+                  className={`hover:text-brandGold transition-colors font-semibold text-lg md:text-xl ${
+                    isScrolled ? 'text-brandPurple' : 'text-white'
                   }`}
                 >
                   Login
@@ -148,8 +148,8 @@ const Header = () => {
                   onClick={openSignup}
                   className={`px-8 py-3.5 rounded-full font-semibold text-lg md:text-xl transition-all duration-300 ${
                     isScrolled
-                      ? 'bg-purple-600 text-white hover:bg-purple-700'
-                      : 'bg-white text-purple-600 hover:bg-gray-100'
+                      ? 'bg-brandGold text-brandPurple hover:brightness-110'
+                      : 'bg-white text-brandPurple hover:bg-gray-100'
                   }`}
                 >
                   Join
@@ -169,9 +169,9 @@ const Header = () => {
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              <X className={`w-8 h-8 ${isScrolled ? 'text-gray-700' : 'text-white'}`} />
+              <X className={`w-8 h-8 ${isScrolled ? 'text-brandPurple' : 'text-white'}`} />
             ) : (
-              <Menu className={`w-8 h-8 ${isScrolled ? 'text-gray-700' : 'text-white'}`} />
+              <Menu className={`w-8 h-8 ${isScrolled ? 'text-brandPurple' : 'text-white'}`} />
             )}
           </button>
         </div>
@@ -179,15 +179,15 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className={`lg:hidden pb-6 pt-2 border-t ${
-            isScrolled ? 'border-gray-100 bg-white' : 'border-white/20 bg-black/50 backdrop-blur-md'
+            isScrolled ? 'border-gray-100 bg-white' : 'border-white/20 bg-brandPurple/80 backdrop-blur-md'
           }`}>
             <div className="flex flex-col space-y-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`hover:text-purple-600 transition-colors font-semibold text-xl ${
-                    isScrolled ? 'text-gray-700' : 'text-white'
+                  className={`hover:text-brandGold transition-colors font-semibold text-xl ${
+                    isScrolled ? 'text-brandPurple' : 'text-white'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -199,7 +199,7 @@ const Header = () => {
               }`}>
                 {isAuthenticated ? (
                   <>
-                    <div className={`flex items-center gap-2 font-semibold text-xl ${isScrolled ? 'text-gray-700' : 'text-white'}`}>
+                    <div className={`flex items-center gap-2 font-semibold text-xl ${isScrolled ? 'text-brandPurple' : 'text-white'}`}>
                       <User2 className="w-6 h-6" />
                       <span>{user?.firstName || 'Account'}</span>
                     </div>
@@ -207,7 +207,7 @@ const Header = () => {
                       onClick={() => { setIsMenuOpen(false); logout(); }}
                       className={`block w-full text-center px-8 py-3.5 rounded-full font-semibold text-xl transition-all duration-300 ${
                         isScrolled
-                          ? 'bg-gray-900 text-white hover:bg-black'
+                          ? 'bg-brandPurple text-white hover:brightness-110'
                           : 'bg-white/10 text-white hover:bg-white/20'
                       }`}
                     >
@@ -218,8 +218,8 @@ const Header = () => {
                   <>
                     <a
                       href="#login"
-                      className={`block hover:text-purple-600 transition-colors font-semibold text-xl ${
-                        isScrolled ? 'text-gray-700' : 'text-white'
+                      className={`block hover:text-brandGold transition-colors font-semibold text-xl ${
+                        isScrolled ? 'text-brandPurple' : 'text-white'
                       }`}
                       onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); openLogin(); }}
                     >
@@ -229,8 +229,8 @@ const Header = () => {
                       onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); openSignup(); }}
                       className={`block w-full text-center px-8 py-3.5 rounded-full font-semibold text-xl transition-all duration-300 ${
                         isScrolled
-                          ? 'bg-purple-600 text-white hover:bg-purple-700'
-                          : 'bg-white text-purple-600 hover:bg-gray-100'
+                          ? 'bg-brandGold text-brandPurple hover:brightness-110'
+                          : 'bg-white text-brandPurple hover:bg-gray-100'
                       }`}
                     >
                       Join

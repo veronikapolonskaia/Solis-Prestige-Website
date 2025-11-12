@@ -5,15 +5,20 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#1a3a52] text-gray-300">
+    <footer className="bg-brandPurple text-gray-300">
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 mb-8">
           {/* Logo, Social, and App Links */}
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-6">
-              <span className="text-3xl font-display font-bold text-white tracking-tight">
-                SOLIS
-              </span>
+              <div className="flex flex-col leading-tight">
+                <div className="text-3xl md:text-4xl font-display font-bold text-brandGold tracking-logo uppercase">
+                  SOLIS
+                </div>
+                <div className="uppercase text-brandGold text-[9px] md:text-[10px] tracking-tagline font-normal mt-0.5">
+                  PRESTIGE TRAVEL CLUB
+                </div>
+              </div>
             </Link>
             
             {/* Social Icons */}
@@ -156,11 +161,11 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter email address"
-                className="w-full px-4 py-3 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="w-full px-4 py-3 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-brandGold"
               />
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-[#c07855] text-white text-sm font-semibold uppercase tracking-wider hover:bg-[#a86747] transition-colors"
+                className="w-full px-6 py-3 bg-brandGold text-brandPurple text-sm font-semibold uppercase tracking-wider hover:brightness-110 transition-colors"
               >
                 SUBSCRIBE
               </button>
