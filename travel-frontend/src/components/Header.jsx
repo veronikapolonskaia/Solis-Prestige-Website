@@ -90,7 +90,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <div className="flex flex-col leading-tight">
-              <div className={`font-display tracking-logo ${isScrolled ? 'text-brandPurple' : 'text-brandGold'} text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase`}>
+              <div className={`font-display tracking-logo ${isScrolled ? 'text-brandPurple' : 'text-brandGold'} text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase`} style={{ letterSpacing: '0.25em' }}>
                 SOLIS
               </div>
               <div className={`uppercase ${isScrolled ? 'text-brandGold' : 'text-brandGold'} text-[9px] sm:text-[10px] md:text-xs lg:text-sm tracking-tagline font-normal mt-0.5`}>

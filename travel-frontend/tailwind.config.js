@@ -22,7 +22,7 @@ export default {
         'wide': '0.05em',
         'wider': '0.1em',
         'widest': '0.15em',
-        'logo': '0.08em',
+        'logo': '0.2em',
         'tagline': '0.2em',
       },
     },

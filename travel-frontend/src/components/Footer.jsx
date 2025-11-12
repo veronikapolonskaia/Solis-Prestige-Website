@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-6">
               <div className="flex flex-col leading-tight">
-                <div className="text-3xl md:text-4xl font-display font-bold text-brandGold tracking-logo uppercase">
+                <div className="text-3xl md:text-4xl font-display font-bold text-brandGold tracking-logo uppercase" style={{ letterSpacing: '0.25em' }}>
                   SOLIS
                 </div>
                 <div className="uppercase text-brandGold text-[9px] md:text-[10px] tracking-tagline font-normal mt-0.5">

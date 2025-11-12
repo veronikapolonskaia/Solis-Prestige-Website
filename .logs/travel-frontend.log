@@ -363,3 +363,9 @@
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: http://192.168.1.67:5173/
+12:14:00 PM [vite] (client) hmr update /src/index.css
+12:14:04 PM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+12:14:22 PM [vite] (client) hmr update /src/components/Footer.jsx, /src/index.css
+12:14:35 PM [vite] (client) hmr update /src/index.css
+12:14:35 PM [vite] (client) hmr update /src/components/Header.jsx, /src/index.css
+12:14:35 PM [vite] (client) hmr update /src/components/Footer.jsx, /src/index.css
