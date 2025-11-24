@@ -93,6 +93,7 @@ start_frontend() {
   echo "travel-frontend pid: $! (logs: $LOG_DIR/travel-frontend.log)"
 }
 
+run_migrations
 start_server
 start_admin
 start_frontend
