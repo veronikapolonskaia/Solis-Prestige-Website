@@ -50,15 +50,13 @@ trap cleanup EXIT INT TERM
 
 run_migrations() {
   echo "Applying database migrations..."
-  MIGRATION_CMD="$ROOT_DIR/server/node_modules/.bin/sequelize"
-  if [[ -x "$MIGRATION_CMD" ]]; then
-    (
-      cd "$ROOT_DIR/server"
-      "$MIGRATION_CMD" db:migrate
-    )
-    echo "Database migrations up-to-date."
+  MIGRATION_SCRIPT="$ROOT_DIR/server/scripts/runMigrations.js"
+  if [[ -f "$MIGRATION_SCRIPT" ]]; then
+    node "$MIGRATION_SCRIPT" || {
+      echo "⚠️  Migration script failed. Continuing without automatic migrations."
+    }
   else
-    echo "⚠️  Sequelize CLI not found at $MIGRATION_CMD"
+    echo "⚠️  Migration script not found at $MIGRATION_SCRIPT"
     echo "    Skipping automatic migrations. Please ensure migrations run separately."
   fi
 }

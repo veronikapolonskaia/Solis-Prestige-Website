@@ -79,11 +79,13 @@ export const AuthProvider = ({ children }) => {
     authLogout();
     setUser(null);
     setIsAuthenticated(false);
+    localStorage.removeItem('auth_user');
+    localStorage.removeItem('auth_token');
   };
 
   const updateUser = (userData) => {
     setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('auth_user', JSON.stringify(userData));
   };
 
   const value = {

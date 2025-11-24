@@ -1,6 +1,12 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
+const shouldLogSql = (() => {
+  if (process.env.SQL_LOGGING === 'true') return true;
+  if (process.env.SQL_LOGGING === 'false') return false;
+  return process.env.NODE_ENV === 'development';
+})();
+
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
@@ -9,7 +15,7 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: 'postgres',
-    logging: process.env.NODE_ENV === 'development' ? console.log : false,
+    logging: shouldLogSql ? console.log : false,
     pool: {
       max: 5,
       min: 0,
@@ -28,7 +34,9 @@ const sequelize = new Sequelize(
 const testConnection = async () => {
   try {
     await sequelize.authenticate();
-    console.log('Database connection has been established successfully.');
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Database connection has been established successfully.');
+    }
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }
@@ -43,7 +51,7 @@ module.exports = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: 'postgres',
-    logging: console.log
+    logging: shouldLogSql ? console.log : false
   },
   test: {
     username: process.env.DB_USER,
@@ -61,7 +69,7 @@ module.exports = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: 'postgres',
-    logging: false
+    logging: shouldLogSql ? console.log : false
   },
   sequelize,
   testConnection
