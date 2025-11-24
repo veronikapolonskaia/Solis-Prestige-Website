@@ -93,7 +93,10 @@ const Header = () => {
               <div className={`font-display tracking-logo ${isScrolled ? 'text-brandPurple' : 'text-brandGold'} text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase`} style={{ letterSpacing: '0.25em' }}>
                 SOLIS
               </div>
-              <div className={`uppercase ${isScrolled ? 'text-brandGold' : 'text-brandGold'} text-[9px] sm:text-[10px] md:text-xs lg:text-sm tracking-tagline font-normal mt-0.5`}>
+              <div
+                className={`uppercase ${isScrolled ? 'text-brandGold' : 'text-brandGold'} text-[9px] sm:text-[10px] md:text-xs lg:text-sm font-normal mt-1`}
+                style={{ letterSpacing: '0.4em', fontFamily: `'SourceCode', 'Source Code Pro', monospace` }}
+              >
                 PRESTIGE TRAVEL CLUB
               </div>
             </div>

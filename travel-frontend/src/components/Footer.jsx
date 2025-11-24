@@ -15,7 +15,10 @@ const Footer = () => {
                 <div className="text-3xl md:text-4xl font-display font-bold text-brandGold tracking-logo uppercase" style={{ letterSpacing: '0.25em' }}>
                   SOLIS
                 </div>
-                <div className="uppercase text-brandGold text-[9px] md:text-[10px] tracking-tagline font-normal mt-0.5">
+                <div
+                  className="uppercase text-brandGold text-[9px] md:text-[10px] font-normal mt-1"
+                  style={{ letterSpacing: '0.4em', fontFamily: `'SourceCode', 'Source Code Pro', monospace` }}
+                >
                   PRESTIGE TRAVEL CLUB
                 </div>
               </div>

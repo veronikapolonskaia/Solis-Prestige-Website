@@ -5008,3 +5008,5 @@ SIGTERM received, shutting down gracefully
 Executing (default): SELECT 1+1 AS result
 Database connection has been established successfully.
 Database initialized successfully
+[32m[nodemon] restarting child process[39m
+[32m[nodemon] starting `node server.js`[39m
