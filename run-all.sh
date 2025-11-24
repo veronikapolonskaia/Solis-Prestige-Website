@@ -48,6 +48,15 @@ cleanup() {
 }
 trap cleanup EXIT INT TERM
 
+run_migrations() {
+  echo "Applying database migrations..."
+  (
+    cd "$ROOT_DIR/server"
+    npx sequelize-cli db:migrate
+  )
+  echo "Database migrations up-to-date."
+}
+
 start_server() {
   echo "Starting API server on :$API_PORT ..."
   (
@@ -78,6 +87,7 @@ start_frontend() {
   echo "travel-frontend pid: $! (logs: $LOG_DIR/travel-frontend.log)"
 }
 
+run_migrations
 start_server
 start_admin
 start_frontend
