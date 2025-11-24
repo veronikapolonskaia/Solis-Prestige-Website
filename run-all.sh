@@ -48,6 +48,21 @@ cleanup() {
 }
 trap cleanup EXIT INT TERM
 
+run_migrations() {
+  echo "Applying database migrations..."
+  MIGRATION_CMD="$ROOT_DIR/server/node_modules/.bin/sequelize"
+  if [[ -x "$MIGRATION_CMD" ]]; then
+    (
+      cd "$ROOT_DIR/server"
+      "$MIGRATION_CMD" db:migrate
+    )
+    echo "Database migrations up-to-date."
+  else
+    echo "⚠️  Sequelize CLI not found at $MIGRATION_CMD"
+    echo "    Skipping automatic migrations. Please ensure migrations run separately."
+  }
+}
+
 start_server() {
   echo "Starting API server on :$API_PORT ..."
   (
