@@ -1,22 +1,57 @@
-FROM node:20
+###############################
+#   1) Build Travel Frontend
+###############################
+FROM node:20 AS travel-build
+WORKDIR /app/travel
+COPY travel-frontend/package*.json ./
+RUN npm install
+COPY travel-frontend ./
+RUN npm run build
 
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+###############################
+#   2) Build Admin Dashboard
+###############################
+FROM node:20 AS admin-build
+WORKDIR /app/admin
+COPY admin-dashboard/package*.json ./
+RUN npm install
+COPY admin-dashboard ./
+RUN npm run build
 
-WORKDIR /app
+###############################
+#   3) Install API Dependencies
+###############################
+FROM node:20 AS api-build
+WORKDIR /app/api
+COPY server/package*.json ./
+RUN npm install
+COPY server ./
 
-COPY server/package*.json server/
-COPY admin-dashboard/package*.json admin-dashboard/
-COPY travel-frontend/package*.json travel-frontend/
+###############################
+#   4) Production Container
+###############################
+FROM nginx:1.25
 
-RUN cd server && npm install \
- && cd ../admin-dashboard && npm install \
- && cd ../travel-frontend && npm install
+# Copy Nginx config
+COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY . .
+# Copy frontend builds
+COPY --from=travel-build /app/travel/dist /var/www/travel
+COPY --from=admin-build /app/admin/build /var/www/admin
 
-RUN chmod +x run-all.sh
+# Copy API code
+COPY --from=api-build /app/api /var/www/api
 
-EXPOSE 3000 5000 5173
+# Install Node inside NGINX container
+RUN apt-get update && \
+    apt-get install -y nodejs npm && \
+    npm install -g pm2
 
-CMD ["bash","run-all.sh"]
+WORKDIR /var/www/api
 
+# Install API production dependencies
+RUN npm install --omit=dev
+
+EXPOSE 80
+
+CMD ["pm2-runtime", "server.js"]
