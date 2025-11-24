@@ -66,4 +66,4 @@ module.exports = {
   Gallery,
   Editorial,
   Hotel
-}; 
+};
