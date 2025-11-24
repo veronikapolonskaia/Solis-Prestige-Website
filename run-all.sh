@@ -15,6 +15,38 @@ mkdir -p "$LOG_DIR"
 
 echo "Using ports -> admin-dashboard:$ADMIN_PORT, server:$API_PORT, travel-frontend:$FRONTEND_PORT"
 
+ensure_node_runtime() {
+  if command -v node >/dev/null 2>&1 && command -v npm >/dev/null 2>&1; then
+    return
+  fi
+
+  NODE_VERSION="${NODE_VERSION:-20.17.0}"
+  ARCH="$(uname -m)"
+  case "$ARCH" in
+    x86_64) NODE_ARCH="x64" ;;
+    aarch64 | arm64) NODE_ARCH="arm64" ;;
+    *) echo "Unsupported architecture: $ARCH. Please install Node.js manually."; exit 1 ;;
+  esac
+
+  NODE_DIR="$ROOT_DIR/.node-runtime/node-v$NODE_VERSION"
+  NODE_BIN="$NODE_DIR/bin/node"
+
+  if [[ ! -x "$NODE_BIN" ]]; then
+    echo "Node.js not found. Downloading Node v$NODE_VERSION ($NODE_ARCH)..."
+    mkdir -p "$NODE_DIR"
+    TARBALL="node-v$NODE_VERSION-linux-$NODE_ARCH.tar.xz"
+    TMP_FILE="$(mktemp)"
+    curl -fsSL "https://nodejs.org/dist/v$NODE_VERSION/$TARBALL" -o "$TMP_FILE"
+    tar -xJf "$TMP_FILE" -C "$NODE_DIR" --strip-components=1
+    rm -f "$TMP_FILE"
+    echo "Node.js downloaded to $NODE_DIR."
+  fi
+
+  export PATH="$NODE_DIR/bin:$PATH"
+}
+
+ensure_node_runtime
+
 kill_on_port() {
   local port="$1"
   if command -v lsof >/dev/null 2>&1; then
