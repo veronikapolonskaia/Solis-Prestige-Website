@@ -52,7 +52,7 @@ run_migrations() {
   echo "Applying database migrations..."
   (
     cd "$ROOT_DIR/server"
-    npx sequelize-cli db:migrate
+    npm run db:migrate
   )
   echo "Database migrations up-to-date."
 }
