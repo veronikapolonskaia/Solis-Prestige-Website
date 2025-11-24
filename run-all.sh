@@ -60,7 +60,7 @@ run_migrations() {
   else
     echo "⚠️  Sequelize CLI not found at $MIGRATION_CMD"
     echo "    Skipping automatic migrations. Please ensure migrations run separately."
-  }
+  fi
 }
 
 start_server() {
