@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { 
-  FolderIcon, PhotoIcon, EyeIcon, TagIcon,
+  FolderIcon, PhotoIcon, EyeIcon,
   InformationCircleIcon
 } from '@heroicons/react/24/outline';
 import FormField from '../forms/FormField';
@@ -24,8 +24,7 @@ const CategoryForm = ({
     handleSubmit,
     formState: { errors },
     watch,
-    setValue,
-    reset
+    setValue
   } = useForm({
     defaultValues: {
       name: category?.name || '',

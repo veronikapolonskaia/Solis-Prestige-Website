@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   PuzzlePieceIcon, CheckCircleIcon, XCircleIcon,
   CogIcon, InformationCircleIcon, ExclamationTriangleIcon
@@ -13,11 +13,7 @@ const Plugins = () => {
   const [showSettings, setShowSettings] = useState(false);
 
 
-  useEffect(() => {
-    loadPlugins();
-  }, []);
-
-  const loadPlugins = async () => {
+const loadPlugins = useCallback(async () => {
     try {
       setLoading(true);
       const response = await api.get('/plugins');
@@ -28,7 +24,11 @@ const Plugins = () => {
     } finally {
       setLoading(false);
     }
-  };
+}, []);
+
+useEffect(() => {
+  loadPlugins();
+}, [loadPlugins]);
 
   const togglePlugin = async (pluginName, enabled) => {
     try {
@@ -162,20 +162,20 @@ const Plugins = () => {
     </div>
   );
 
-  const PluginSettingsModal = () => {
-    const [settings, setSettings] = useState(selectedPlugin?.config || {});
+const PluginSettingsModal = ({ plugin }) => {
+  const [settings, setSettings] = useState(plugin?.config || {});
 
     useEffect(() => {
-      if (selectedPlugin) {
-        setSettings(selectedPlugin.config || {});
+    if (plugin) {
+      setSettings(plugin.config || {});
       }
-    }, [selectedPlugin]);
+  }, [plugin]);
 
-    if (!selectedPlugin) return null;
+  if (!plugin) return null;
 
     const handleSave = () => {
-      if (selectedPlugin) {
-        updatePluginSettings(selectedPlugin.name, settings);
+    if (plugin) {
+      updatePluginSettings(plugin.name, settings);
       }
     };
 
@@ -324,7 +324,7 @@ const Plugins = () => {
       </div>
 
       {/* Settings Modal */}
-      {showSettings && <PluginSettingsModal />}
+      {showSettings && <PluginSettingsModal plugin={selectedPlugin} />}
     </div>
   );
 };

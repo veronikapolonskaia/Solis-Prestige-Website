@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   ArrowLeftIcon, PencilIcon, TrashIcon, EyeIcon,
@@ -13,7 +13,6 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
-  const [showEditModal, setShowEditModal] = useState(false);
 
   // Mock product data
   const mockProduct = {
@@ -55,11 +54,7 @@ const ProductDetail = () => {
     reviewCount: 89
   };
 
-  useEffect(() => {
-    loadProduct();
-  }, [id]);
-
-  const loadProduct = async () => {
+const loadProduct = useCallback(async () => {
     try {
       setLoading(true);
       // In a real app, this would fetch from API
@@ -71,7 +66,11 @@ const ProductDetail = () => {
     } finally {
       setLoading(false);
     }
-  };
+}, [id]);
+
+useEffect(() => {
+  loadProduct();
+}, [loadProduct]);
 
   const deleteProduct = async () => {
     const confirmed = window.confirm('Are you sure you want to delete this product? This action cannot be undone.');
@@ -158,7 +157,7 @@ const ProductDetail = () => {
         </div>
         <div className="flex items-center space-x-3">
           <button
-            onClick={() => setShowEditModal(true)}
+            onClick={() => navigate(`/products/${id}/edit`)}
             className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
           >
             <PencilIcon className="h-4 w-4 mr-2" />

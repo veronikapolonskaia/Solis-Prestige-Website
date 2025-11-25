@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeftIcon, PhotoIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { PageHeader, Card } from '../components';
@@ -28,46 +28,48 @@ const GalleryForm = () => {
   const [categories, setCategories] = useState([]);
   const [tagInput, setTagInput] = useState('');
 
-  useEffect(() => {
-    fetchCategories();
-    if (isEdit) {
-      fetchGalleryItem();
-    }
-  }, [id, isEdit]);
+const fetchCategories = useCallback(async () => {
+  try {
+    const response = await api.get('/gallery/categories');
+    setCategories(response.data.data);
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+  }
+}, []);
 
-  const fetchCategories = async () => {
-    try {
-      const response = await api.get('/gallery/categories');
-      setCategories(response.data.data);
-    } catch (error) {
-      console.error('Error fetching categories:', error);
-    }
-  };
+const fetchGalleryItem = useCallback(async () => {
+  if (!isEdit) return;
+  try {
+    setLoading(true);
+    const response = await api.get(`/gallery/${id}`);
+    const item = response.data.data;
+    setFormData({
+      title: item.title,
+      description: item.description || '',
+      category: item.category,
+      featured: item.featured,
+      display_order: item.display_order,
+      alt_text: item.alt_text || '',
+      tags: item.tags || [],
+      status: item.status
+    });
+    setExistingImage(item.image_url);
+  } catch (error) {
+    console.error('Error fetching gallery item:', error);
+    toast.error('Failed to fetch gallery item');
+    navigate('/gallery');
+  } finally {
+    setLoading(false);
+  }
+}, [id, isEdit, navigate]);
 
-  const fetchGalleryItem = async () => {
-    try {
-      setLoading(true);
-      const response = await api.get(`/gallery/${id}`);
-      const item = response.data.data;
-      setFormData({
-        title: item.title,
-        description: item.description || '',
-        category: item.category,
-        featured: item.featured,
-        display_order: item.display_order,
-        alt_text: item.alt_text || '',
-        tags: item.tags || [],
-        status: item.status
-      });
-      setExistingImage(item.image_url);
-    } catch (error) {
-      console.error('Error fetching gallery item:', error);
-      toast.error('Failed to fetch gallery item');
-      navigate('/gallery');
-    } finally {
-      setLoading(false);
-    }
-  };
+useEffect(() => {
+  fetchCategories();
+}, [fetchCategories]);
+
+useEffect(() => {
+  fetchGalleryItem();
+}, [fetchGalleryItem]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;

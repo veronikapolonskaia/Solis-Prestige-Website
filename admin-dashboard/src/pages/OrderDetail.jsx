@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   ArrowLeftIcon, PencilIcon, PrinterIcon, EnvelopeIcon,
@@ -31,11 +31,7 @@ const OrderDetail = () => {
     refunded: { label: 'Refunded', color: 'bg-gray-100 text-gray-800' }
   };
 
-  useEffect(() => {
-    loadOrder();
-  }, [id]);
-
-  const loadOrder = async () => {
+const loadOrder = useCallback(async () => {
     try {
       setLoading(true);
       const response = await ordersAPI.getById(id);
@@ -56,7 +52,11 @@ const OrderDetail = () => {
     } finally {
       setLoading(false);
     }
-  };
+}, [id]);
+
+useEffect(() => {
+  loadOrder();
+}, [loadOrder]);
 
   const updateOrderStatus = async (newStatus) => {
     try {

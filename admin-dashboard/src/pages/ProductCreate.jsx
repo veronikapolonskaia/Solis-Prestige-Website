@@ -8,7 +8,6 @@ const ProductCreate = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(true);
   const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -30,7 +29,6 @@ const ProductCreate = () => {
   };
 
   const handleSubmit = async (formData) => {
-    setLoading(true);
     try {
       await productsAPI.create(formData);
       toast.success('Product created successfully');
@@ -39,8 +37,6 @@ const ProductCreate = () => {
       const message = err?.response?.data?.error || 'Failed to create product';
       toast.error(message);
       throw err;
-    } finally {
-      setLoading(false);
     }
   };
 

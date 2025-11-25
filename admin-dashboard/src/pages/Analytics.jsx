@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  LineChart, Line, PieChart, Pie, Cell, AreaChart, Area
+  CartesianGrid, Tooltip, ResponsiveContainer, XAxis, YAxis,
+  PieChart, Pie, Cell, AreaChart, Area
 } from 'recharts';
 import {
   ArrowTrendingUpIcon, ArrowTrendingDownIcon, CurrencyDollarIcon,
@@ -14,7 +14,6 @@ import toast from 'react-hot-toast';
 
 const Analytics = () => {
   const [timeRange, setTimeRange] = useState('30d');
-  const [loading, setLoading] = useState(false);
   const [analyticsData, setAnalyticsData] = useState({
     overview: {},
     salesData: [],
@@ -24,48 +23,9 @@ const Analytics = () => {
     paymentMethods: []
   });
 
-  // Mock data for demonstration
-  const mockSalesData = [
-    { date: '2024-01-01', sales: 1200, orders: 15, customers: 12 },
-    { date: '2024-01-02', sales: 1800, orders: 22, customers: 18 },
-    { date: '2024-01-03', sales: 1500, orders: 19, customers: 16 },
-    { date: '2024-01-04', sales: 2200, orders: 28, customers: 24 },
-    { date: '2024-01-05', sales: 1900, orders: 25, customers: 21 },
-    { date: '2024-01-06', sales: 2800, orders: 35, customers: 30 },
-    { date: '2024-01-07', sales: 3200, orders: 40, customers: 35 },
-  ];
-
-  const mockProductPerformance = [
-    { name: 'Laptop Pro', sales: 45, revenue: 13500, growth: 12 },
-    { name: 'Wireless Headphones', sales: 38, revenue: 7600, growth: 8 },
-    { name: 'Smart Watch', sales: 32, revenue: 6400, growth: -5 },
-    { name: 'Gaming Mouse', sales: 28, revenue: 4200, growth: 15 },
-    { name: 'Bluetooth Speaker', sales: 25, revenue: 3750, growth: 3 },
-  ];
-
-  const mockCategorySales = [
-    { name: 'Electronics', value: 45, color: '#3B82F6' },
-    { name: 'Clothing', value: 25, color: '#10B981' },
-    { name: 'Home & Garden', value: 15, color: '#F59E0B' },
-    { name: 'Sports', value: 10, color: '#EF4444' },
-    { name: 'Books', value: 5, color: '#8B5CF6' },
-  ];
-
-  const mockOverview = {
-    totalSales: 15600,
-    totalOrders: 184,
-    totalCustomers: 156,
-    averageOrderValue: 84.78,
-    salesGrowth: 12.5,
-    orderGrowth: 8.2,
-    customerGrowth: 15.3,
-    aovGrowth: 4.1
-  };
-
   useEffect(() => {
     const loadAnalytics = async () => {
       try {
-        setLoading(true);
         const now = new Date();
         let startDate;
         if (timeRange === '7d') startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
@@ -126,7 +86,7 @@ const Analytics = () => {
         console.error(err);
         toast.error('Failed to load analytics');
       } finally {
-        setLoading(false);
+        // no-op
       }
     };
     loadAnalytics();

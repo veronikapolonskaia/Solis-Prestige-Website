@@ -10,7 +10,7 @@ import {
   ChevronDownIcon,
   FolderIcon,
 } from '@heroicons/react/24/outline';
-import { formatDate, getStatusColor } from '../utils/helpers';
+import { formatDate } from '../utils/helpers';
 import api from '../services/api';
 import toast from 'react-hot-toast';
 import { PageHeader, Card, EmptyState, ConfirmDialog, Badge } from '../components';

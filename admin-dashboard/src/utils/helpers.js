@@ -69,8 +69,8 @@ export const isValidEmail = (email) => {
 
 // Validate phone number
 export const isValidPhone = (phone) => {
-  const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-  return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+  const phoneRegex = /^\+?[1-9]\d{0,15}$/;
+  return phoneRegex.test(phone.replace(/[\s-()]/g, ''));
 };
 
 // Get order status color

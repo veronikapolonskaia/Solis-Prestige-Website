@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { 
   ChevronUpIcon, ChevronDownIcon, MagnifyingGlassIcon,
-  FunnelIcon, ChevronLeftIcon, ChevronRightIcon
+  ChevronLeftIcon, ChevronRightIcon
 } from '@heroicons/react/24/outline';
 
 const DataTable = ({
@@ -16,7 +16,6 @@ const DataTable = ({
   const [searchTerm, setSearchTerm] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
   const [currentPage, setCurrentPage] = useState(1);
-  const [filters, setFilters] = useState({});
 
   // Filter data based on search term
   const filteredData = useMemo(() => {
@@ -85,30 +84,21 @@ const DataTable = ({
   return (
     <div className={`bg-white rounded-lg shadow ${className}`}>
       {/* Search and Filters */}
-      {(searchable || Object.keys(filters).length > 0) && (
+      {searchable && (
         <div className="p-4 border-b border-gray-200">
           <div className="flex flex-col sm:flex-row gap-4">
-            {searchable && (
-              <div className="flex-1">
-                <div className="relative">
-                  <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
+            <div className="flex-1">
+              <div className="relative">
+                <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
               </div>
-            )}
-            
-            {Object.keys(filters).length > 0 && (
-              <div className="flex items-center space-x-2">
-                <FunnelIcon className="h-4 w-4 text-gray-400" />
-                <span className="text-sm text-gray-600">Filters applied</span>
-              </div>
-            )}
+            </div>
           </div>
         </div>
       )}

@@ -25,8 +25,7 @@ const OrderForm = ({
     handleSubmit,
     formState: { errors },
     watch,
-    setValue,
-    reset
+    setValue
   } = useForm({
     defaultValues: {
       orderNumber: order?.orderNumber || '',

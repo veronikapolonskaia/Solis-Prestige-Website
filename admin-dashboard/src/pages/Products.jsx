@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   PlusIcon,
@@ -37,31 +37,21 @@ const Products = () => {
 
   const debouncedSearch = useDebounce(searchTerm, 500);
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  useEffect(() => {
-    fetchProducts();
-  }, [debouncedSearch, selectedCategory, selectedStatus, minPrice, maxPrice, sortBy, sortOrder, currentPage]);
-
-  const fetchCategories = async () => {
-    try {
-      const response = await api.get('/categories');
-      
-      // Handle the API response structure according to documentation
-      if (response.data?.success && response.data?.data) {
-        setCategories(Array.isArray(response.data.data) ? response.data.data : []);
-      } else {
-        // Fallback for different response structure
-        setCategories(response.data?.data || []);
-      }
-    } catch (error) {
-      console.error('Error fetching categories:', error);
+const fetchCategories = useCallback(async () => {
+  try {
+    const response = await api.get('/categories');
+    
+    if (response.data?.success && response.data?.data) {
+      setCategories(Array.isArray(response.data.data) ? response.data.data : []);
+    } else {
+      setCategories(response.data?.data || []);
     }
-  };
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+  }
+}, []);
 
-  const fetchProducts = async () => {
+const fetchProducts = useCallback(async () => {
     setLoading(true);
     try {
       const params = {
@@ -98,7 +88,15 @@ const Products = () => {
     } finally {
       setLoading(false);
     }
-  };
+}, [currentPage, debouncedSearch, maxPrice, minPrice, selectedCategory, selectedStatus, sortBy, sortOrder]);
+
+useEffect(() => {
+  fetchCategories();
+}, [fetchCategories]);
+
+useEffect(() => {
+  fetchProducts();
+}, [fetchProducts]);
 
   const handleDelete = async (productId) => {
     setConfirmContext({ type: 'single', id: productId });

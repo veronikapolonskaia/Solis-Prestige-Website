@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   CogIcon, CreditCardIcon, EnvelopeIcon, TruckIcon,
   ShieldCheckIcon, PhotoIcon, CurrencyDollarIcon
@@ -67,11 +67,7 @@ const Settings = () => {
     }
   });
 
-  useEffect(() => {
-    loadSettings();
-  }, []);
-
-  const loadSettings = async () => {
+const loadSettings = useCallback(async () => {
     try {
       setLoading(true);
       const response = await settingsService.getAllSettings();
@@ -89,7 +85,11 @@ const Settings = () => {
     } finally {
       setLoading(false);
     }
-  };
+}, []);
+
+useEffect(() => {
+  loadSettings();
+}, [loadSettings]);
 
   const transformSettingsFromAPI = (apiData) => {
     // API returns data in format: { category: { key: value } }

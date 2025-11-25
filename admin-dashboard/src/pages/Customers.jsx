@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   MagnifyingGlassIcon,
@@ -32,11 +32,7 @@ const Customers = () => {
 
   const debouncedSearch = useDebounce(searchTerm, 500);
 
-  useEffect(() => {
-    fetchCustomers();
-  }, [debouncedSearch, selectedStatus, selectedDateRange, currentPage]);
-
-  const fetchCustomers = async () => {
+  const fetchCustomers = useCallback(async () => {
     setLoading(true);
     try {
       const params = {
@@ -69,7 +65,11 @@ const Customers = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, debouncedSearch, selectedStatus, selectedDateRange]);
+
+  useEffect(() => {
+    fetchCustomers();
+  }, [fetchCustomers]);
 
   const handleDelete = async (customerId) => {
     if (!window.confirm('Are you sure you want to delete this customer?')) {

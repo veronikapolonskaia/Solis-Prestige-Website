@@ -121,16 +121,6 @@ const Dashboard = () => {
     },
   ];
 
-  const getStatusColor = (status) => {
-    const colors = {
-      delivered: 'bg-green-100 text-green-800',
-      processing: 'bg-yellow-100 text-yellow-800',
-      shipped: 'bg-blue-100 text-blue-800',
-      cancelled: 'bg-red-100 text-red-800',
-    };
-    return colors[status] || 'bg-gray-100 text-gray-800';
-  };
-
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">

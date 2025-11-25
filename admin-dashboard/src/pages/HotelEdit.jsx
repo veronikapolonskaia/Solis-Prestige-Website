@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { PageHeader, Card } from '../components';
 import api from '../services/api';
@@ -40,11 +40,7 @@ const HotelEdit = () => {
   const [newImageUrl, setNewImageUrl] = useState('');
   const [newBenefit, setNewBenefit] = useState('');
 
-  useEffect(() => {
-    fetchHotel();
-  }, [id]);
-
-  const fetchHotel = async () => {
+const fetchHotel = useCallback(async () => {
     setLoading(true);
     try {
       const response = await api.get(`/hotels/${id}`);
@@ -86,7 +82,11 @@ const HotelEdit = () => {
     } finally {
       setLoading(false);
     }
-  };
+}, [id, navigate]);
+
+useEffect(() => {
+  fetchHotel();
+}, [fetchHotel]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

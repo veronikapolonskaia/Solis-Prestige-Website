@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   PlusIcon,
@@ -9,12 +9,11 @@ import {
   EyeIcon,
   PhotoIcon,
   StarIcon,
-  ArrowUpTrayIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { StarIcon as StarSolidIcon } from '@heroicons/react/24/solid';
 import { useDebounce } from '../hooks/useDebounce';
-import { formatDate, getStatusColor } from '../utils/helpers';
+import { formatDate } from '../utils/helpers';
 import api from '../services/api';
 import toast from 'react-hot-toast';
 import { PageHeader, Card, Badge, EmptyState, ConfirmDialog } from '../components';
@@ -44,47 +43,47 @@ const Gallery = () => {
 
   const debouncedSearch = useDebounce(searchTerm, 500);
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
+const fetchCategories = useCallback(async () => {
+  try {
+    const response = await api.get('/gallery/categories');
+    setCategories(response.data.data);
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+  }
+}, []);
 
-  useEffect(() => {
-    fetchGalleryItems();
-  }, [debouncedSearch, selectedCategory, selectedStatus, featuredFilter, sortBy, sortOrder, currentPage]);
+const fetchGalleryItems = useCallback(async () => {
+  try {
+    setLoading(true);
+    const params = new URLSearchParams({
+      page: currentPage,
+      limit: 12,
+    });
 
-  const fetchCategories = async () => {
-    try {
-      const response = await api.get('/gallery/categories');
-      setCategories(response.data.data);
-    } catch (error) {
-      console.error('Error fetching categories:', error);
-    }
-  };
+    if (debouncedSearch) params.append('search', debouncedSearch);
+    if (selectedCategory) params.append('category', selectedCategory);
+    if (selectedStatus) params.append('status', selectedStatus);
+    if (featuredFilter) params.append('featured', featuredFilter);
 
-  const fetchGalleryItems = async () => {
-    try {
-      setLoading(true);
-      const params = new URLSearchParams({
-        page: currentPage,
-        limit: 12,
-      });
+    const response = await api.get(`/gallery?${params}`);
+    setGalleryItems(response.data.data);
+    setTotalPages(response.data.pagination.pages);
+    setTotalItems(response.data.pagination.total);
+  } catch (error) {
+    console.error('Error fetching gallery items:', error);
+    toast.error('Failed to fetch gallery items');
+  } finally {
+    setLoading(false);
+  }
+}, [currentPage, debouncedSearch, featuredFilter, selectedCategory, selectedStatus, sortBy, sortOrder]);
 
-      if (debouncedSearch) params.append('search', debouncedSearch);
-      if (selectedCategory) params.append('category', selectedCategory);
-      if (selectedStatus) params.append('status', selectedStatus);
-      if (featuredFilter) params.append('featured', featuredFilter);
+useEffect(() => {
+  fetchCategories();
+}, [fetchCategories]);
 
-      const response = await api.get(`/gallery?${params}`);
-      setGalleryItems(response.data.data);
-      setTotalPages(response.data.pagination.pages);
-      setTotalItems(response.data.pagination.total);
-    } catch (error) {
-      console.error('Error fetching gallery items:', error);
-      toast.error('Failed to fetch gallery items');
-    } finally {
-      setLoading(false);
-    }
-  };
+useEffect(() => {
+  fetchGalleryItems();
+}, [fetchGalleryItems]);
 
   const handleDelete = async (id) => {
     try {
@@ -133,14 +132,6 @@ const Gallery = () => {
     } catch (error) {
       console.error('Error performing bulk action:', error);
       toast.error('Failed to perform bulk action');
-    }
-  };
-
-  const handleSelectAll = () => {
-    if (selectedItems.length === galleryItems.length) {
-      setSelectedItems([]);
-    } else {
-      setSelectedItems(galleryItems.map(item => item.id));
     }
   };
 

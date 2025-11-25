@@ -33,10 +33,7 @@ const CustomerDetail = () => {
     }
   };
 
-  useEffect(() => {
-    loadCustomer();
-  }, [id]);
-
+useEffect(() => {
   const loadCustomer = async () => {
     try {
       setLoading(true);
@@ -47,6 +44,8 @@ const CustomerDetail = () => {
       setLoading(false);
     }
   };
+  loadCustomer();
+}, [id]);
 
   const formatCurrency = (value) => {
     return new Intl.NumberFormat('en-US', {

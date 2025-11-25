@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   PlusIcon,
@@ -32,11 +32,7 @@ const Hotels = () => {
 
   const debouncedSearch = useDebounce(searchTerm, 500);
 
-  useEffect(() => {
-    fetchHotels();
-  }, [debouncedSearch, selectedCity, selectedCountry, selectedStatus, showSpecialOffers, currentPage]);
-
-  const fetchHotels = async () => {
+const fetchHotels = useCallback(async () => {
     setLoading(true);
     try {
       const params = {
@@ -66,7 +62,11 @@ const Hotels = () => {
     } finally {
       setLoading(false);
     }
-  };
+}, [currentPage, debouncedSearch, selectedCity, selectedCountry, selectedStatus, showSpecialOffers]);
+
+useEffect(() => {
+  fetchHotels();
+}, [fetchHotels]);
 
   const handleDelete = async (hotelId) => {
     setConfirmContext({ type: 'single', id: hotelId });

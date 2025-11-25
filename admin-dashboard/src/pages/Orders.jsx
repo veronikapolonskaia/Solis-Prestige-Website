@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   MagnifyingGlassIcon,
@@ -32,11 +32,7 @@ const Orders = () => {
 
   const debouncedSearch = useDebounce(searchTerm, 500);
 
-  useEffect(() => {
-    fetchOrders();
-  }, [debouncedSearch, selectedStatus, selectedPaymentStatus, selectedDateRange, currentPage]);
-
-  const fetchOrders = async () => {
+const fetchOrders = useCallback(async () => {
     setLoading(true);
     try {
       const params = {
@@ -70,7 +66,11 @@ const Orders = () => {
     } finally {
       setLoading(false);
     }
-  };
+}, [currentPage, debouncedSearch, selectedDateRange, selectedPaymentStatus, selectedStatus]);
+
+useEffect(() => {
+  fetchOrders();
+}, [fetchOrders]);
 
   const handleStatusUpdate = async (orderId, newStatus) => {
     try {

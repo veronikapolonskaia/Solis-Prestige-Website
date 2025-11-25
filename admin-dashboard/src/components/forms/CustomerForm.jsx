@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { 
-  UserIcon, EnvelopeIcon, PhoneIcon, MapPinIcon,
+  UserIcon, MapPinIcon,
   ShieldCheckIcon, BellIcon
 } from '@heroicons/react/24/outline';
 import FormField from '../forms/FormField';
@@ -21,10 +21,7 @@ const CustomerForm = ({
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    watch,
-    setValue,
-    reset
+    formState: { errors }
   } = useForm({
     defaultValues: {
       firstName: customer?.firstName || '',
