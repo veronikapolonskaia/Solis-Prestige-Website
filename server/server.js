@@ -1,7 +1,7 @@
 const app = require('./src/app');
 
 // Force API to always run on port 5000 (NGINX proxies to this)
-const PORT = 5000;
+const PORT = parseInt(process.env.PORT, 10) || 5000;
 
 app.listen(PORT, () => {
   console.log(`🚀 Ecommerce API server running on port ${PORT}`);

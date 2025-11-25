@@ -28,6 +28,7 @@ const galleryRoutes = require('./routes/gallery');
 const editorialRoutes = require('./routes/editorials');
 const hotelRoutes = require('./routes/hotels');
 const bookingRoutes = require('./routes/bookings');
+const systemRoutes = require('./routes/system');
 
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
@@ -128,6 +129,7 @@ app.use('/api/gallery', galleryRoutes);
 app.use('/api/editorials', editorialRoutes);
 app.use('/api/hotels', hotelRoutes);
 app.use('/api/bookings', bookingRoutes);
+app.use('/api/system', systemRoutes);
 
 // Initialize database
 async function initializeApp() {
