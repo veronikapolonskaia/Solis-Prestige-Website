@@ -36,6 +36,9 @@ const notFound = require('./middleware/notFound');
 
 const app = express();
 
+// Trust proxy for Railway (must be before rate limiter)
+app.set('trust proxy', 1);
+
 // Security middleware
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' }
@@ -131,30 +134,8 @@ app.use('/api/hotels', hotelRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/system', systemRoutes);
 
-// Initialize database
-async function initializeApp() {
-  try {
-    // Test database connection
-    await testConnection();
-    
-    // Sync database models - only if SYNC_MODELS is enabled
-    if (process.env.SYNC_MODELS === 'true') {
-      const models = require('./models');
-      await sequelize.sync({ alter: true });
-    }
-    
-    console.log('Database initialized successfully');
-  } catch (error) {
-    console.error('Failed to initialize app:', error);
-    process.exit(1);
-  }
-}
-
 // Error handling middleware
 app.use(notFound);
 app.use(errorHandler);
-
-// Initialize the app
-initializeApp();
 
 module.exports = app;
