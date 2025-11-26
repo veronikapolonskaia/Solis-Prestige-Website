@@ -41,13 +41,13 @@ const Login = () => {
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <div className="mx-auto h-16 w-16 rounded-2xl bg-gradient-peach-gold flex items-center justify-center shadow-luxe">
-            <span className="text-white font-bold text-2xl">DS</span>
+            <span className="text-white font-bold text-2xl">S</span>
           </div>
           <h2 className="mt-6 text-center text-4xl font-bold text-gray-900 luxe-heading">
             Welcome Back
           </h2>
           <p className="mt-2 text-center text-base text-gray-600 luxe-text">
-            Sign in to your Deluxe Soiree admin dashboard
+            Sign in to your SOLIS admin dashboard
           </p>
         </div>
         

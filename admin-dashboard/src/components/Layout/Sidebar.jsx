@@ -59,11 +59,11 @@ const Sidebar = ({ isOpen, onClose }) => {
           <div className="flex items-center justify-between h-20 px-6 border-b border-white/20">
             <div className="flex items-center space-x-3">
               <div className="h-10 w-10 rounded-xl bg-gradient-peach-gold flex items-center justify-center shadow-luxe">
-                <span className="text-white font-bold text-lg">DS</span>
+                <span className="text-white font-bold text-lg">S</span>
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900 luxe-heading">
-                  Deluxe Soiree
+                  SOLIS
                 </h1>
                 <p className="text-xs text-gray-500 luxe-alt">Admin Dashboard</p>
               </div>
