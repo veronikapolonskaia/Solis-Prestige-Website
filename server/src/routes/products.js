@@ -426,6 +426,65 @@ router.put('/:id', authenticate, requireAdmin, [
 });
 
 /**
+ * @route   DELETE /api/products/bulk
+ * @desc    Bulk delete products (Admin only)
+ * @access  Private (Admin)
+ */
+router.delete('/bulk', authenticate, requireAdmin, async (req, res) => {
+  try {
+    const { ids } = req.body;
+
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'Product IDs array is required'
+      });
+    }
+
+    // Validate all IDs are UUIDs
+    const invalidIds = ids.filter(id => !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id));
+    if (invalidIds.length > 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid product IDs provided',
+        invalidIds
+      });
+    }
+
+    // Find all products
+    const products = await Product.findAll({
+      where: { id: { [Op.in]: ids } }
+    });
+
+    if (products.length === 0) {
+      return res.status(404).json({
+        success: false,
+        error: 'No products found with the provided IDs'
+      });
+    }
+
+    // Soft delete by setting isActive to false
+    await Product.update(
+      { isActive: false },
+      { where: { id: { [Op.in]: ids } } }
+    );
+
+    res.json({
+      success: true,
+      message: `${products.length} product(s) deleted successfully`,
+      deletedCount: products.length
+    });
+  } catch (error) {
+    console.error('Bulk delete products error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to delete products',
+      details: error.message
+    });
+  }
+});
+
+/**
  * @route   DELETE /api/products/:id
  * @desc    Delete a product (Admin only)
  * @access  Private (Admin)
@@ -433,6 +492,14 @@ router.put('/:id', authenticate, requireAdmin, [
 router.delete('/:id', authenticate, requireAdmin, async (req, res) => {
   try {
     const { id } = req.params;
+
+    // Validate UUID format
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid product ID format'
+      });
+    }
 
     const product = await Product.findByPk(id);
     if (!product) {
@@ -453,7 +520,8 @@ router.delete('/:id', authenticate, requireAdmin, async (req, res) => {
     console.error('Delete product error:', error);
     res.status(500).json({
       success: false,
-      error: 'Failed to delete product'
+      error: 'Failed to delete product',
+      details: error.message
     });
   }
 });

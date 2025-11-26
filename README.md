@@ -124,6 +124,7 @@ ecommerce-backend-admin-PERN-main/
 
 - **API Documentation**: http://localhost:5000/api-docs
 - **Development Guide**: See `development-docs/` folder
+- **Railway Deployment Guide**: See [RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md) for complete deployment instructions
 - **Plugin Development**: Modular plugin system
 
 ## 🤝 Contributing
