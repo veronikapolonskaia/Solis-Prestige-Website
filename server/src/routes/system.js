@@ -55,6 +55,15 @@ router.post('/migrate', async (req, res) => {
   try {
     await sequelize.authenticate();
 
+    // Enable UUID extension if it doesn't exist
+    try {
+      await sequelize.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";');
+      console.log('✅ UUID extension enabled');
+    } catch (extError) {
+      // Extension might already exist or there might be a permission issue
+      console.warn('⚠️  Could not enable UUID extension (may already exist):', extError.message);
+    }
+
     const umzug = new Umzug({
       migrations: { 
         glob: path.join(__dirname, '../migrations/*.js'),
