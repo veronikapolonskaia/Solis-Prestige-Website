@@ -57,15 +57,35 @@ router.post('/', authenticate, requireAdmin, [
     return res.status(400).json({ success: false, error: 'Validation Error', details: errors.array() });
   }
   try {
+    // Normalize data before creating
+    let tags = null;
+    if (req.body.tags !== undefined && req.body.tags !== null) {
+      if (Array.isArray(req.body.tags)) {
+        tags = req.body.tags.length > 0 ? req.body.tags : null;
+      } else if (typeof req.body.tags === 'string') {
+        try {
+          const parsed = JSON.parse(req.body.tags);
+          tags = Array.isArray(parsed) && parsed.length > 0 ? parsed : null;
+        } catch {
+          // If not valid JSON, treat as single tag
+          tags = req.body.tags.trim() ? [req.body.tags.trim()] : null;
+        }
+      }
+    }
+    
+    const excerpt = req.body.excerpt && req.body.excerpt.trim() ? req.body.excerpt.trim() : null;
+    const heroUrl = req.body.heroUrl && req.body.heroUrl.trim() ? req.body.heroUrl.trim() : null;
+    const author = req.body.author && req.body.author.trim() ? req.body.author.trim() : null;
+    
     const editorial = await Editorial.create({
-      title: req.body.title,
-      slug: req.body.slug,
-      excerpt: req.body.excerpt,
-      heroUrl: req.body.heroUrl,
+      title: req.body.title.trim(),
+      slug: req.body.slug.trim(),
+      excerpt: excerpt,
+      heroUrl: heroUrl,
       heroType: req.body.heroType || 'image',
-      content: req.body.content,
-      author: req.body.author,
-      tags: req.body.tags || [],
+      content: req.body.content.trim(),
+      author: author,
+      tags: tags,
       status: req.body.status || 'draft',
       publishedAt: req.body.status === 'published' ? new Date() : null
     });
@@ -75,7 +95,16 @@ router.post('/', authenticate, requireAdmin, [
       return res.status(400).json({ success: false, error: 'Slug already exists. Choose a unique slug.' });
     }
     console.error('Create editorial error:', err);
-    res.status(500).json({ success: false, error: 'Failed to create editorial' });
+    console.error('Error details:', {
+      message: err.message,
+      name: err.name,
+      stack: err.stack
+    });
+    res.status(500).json({ 
+      success: false, 
+      error: 'Failed to create editorial',
+      details: process.env.NODE_ENV === 'development' ? err.message : undefined
+    });
   }
 });
 
