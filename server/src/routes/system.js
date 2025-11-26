@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const { Umzug, SequelizeStorage } = require('umzug');
-const { sequelize } = require('../config/database');
+const { sequelize, Sequelize } = require('../config/database');
 
 const router = express.Router();
 
@@ -56,7 +56,17 @@ router.post('/migrate', async (req, res) => {
     await sequelize.authenticate();
 
     const umzug = new Umzug({
-      migrations: { glob: path.join(__dirname, '../migrations/*.js') },
+      migrations: { 
+        glob: path.join(__dirname, '../migrations/*.js'),
+        resolve: ({ name, path: migrationPath, context }) => {
+          const migration = require(migrationPath);
+          return {
+            name,
+            up: async () => migration.up(context, Sequelize),
+            down: async () => migration.down(context, Sequelize),
+          };
+        },
+      },
       context: sequelize.getQueryInterface(),
       storage: new SequelizeStorage({ sequelize }),
       logger: console,
