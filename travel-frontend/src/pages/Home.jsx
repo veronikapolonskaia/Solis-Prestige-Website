@@ -33,19 +33,18 @@ const Home = () => {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6 sm:mb-8">
-              A community for luxury travellers
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brandPurple mb-6 sm:mb-8">
+              A Private Circle for Exceptional Travellers
             </h2>
-            <p className="text-base sm:text-lg md:text-lg lg:text-xl text-gray-700 leading-relaxed mb-8 sm:mb-10 px-2 sm:px-0">
-              SOLIS is the trusted community for modern luxury travellers. Find inspiration,
-              book unique journeys, and connect with like-minded members.
+            <p className="text-base sm:text-lg md:text-lg lg:text-xl text-brandPurple leading-relaxed mb-8 sm:mb-10 px-2 sm:px-0">
+              Solis is an elite travel house crafting rare, regal, and exquisitely personal journeys
+              for those who seek beauty, discretion, and an elevated way of moving through the world.
             </p>
             <Link
-              to="/register"
-              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-3 sm:py-4 bg-gray-900 text-white rounded-full font-semibold text-base sm:text-lg hover:bg-gray-800 transition-all duration-300 shadow-lg"
+              to="/contact"
+              className="inline-flex items-center justify-center px-6 sm:px-10 py-3 sm:py-4 bg-brandPurple text-white rounded-full font-semibold text-base sm:text-lg hover:brightness-110 transition-all duration-300 shadow-lg"
             >
-              CREATE FREE ACCOUNT
-              <span className="text-lg sm:text-xl">→</span>
+              CONTACT US
             </Link>
           </div>
         </div>
