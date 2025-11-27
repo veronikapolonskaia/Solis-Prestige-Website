@@ -22,13 +22,9 @@ const Home = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         
         {/* Content */}
-        <div className="relative z-10 text-center text-white px-4 sm:px-6">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6">
-            <span>Travel</span>
-            <span className="text-purple-300 text-2xl sm:text-3xl md:text-4xl">✦</span>
-            <span>Discover</span>
-            <span className="text-purple-300 text-2xl sm:text-3xl md:text-4xl">✦</span>
-            <span>Belong</span>
+        <div className="relative z-10 text-center px-4 sm:px-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight text-center" style={{ color: '#B794F6' }}>
+            TAILORED JOURNEYS
           </h1>
         </div>
       </section>
