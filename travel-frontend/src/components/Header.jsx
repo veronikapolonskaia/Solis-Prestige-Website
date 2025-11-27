@@ -85,10 +85,10 @@ const Header = () => {
         isScrolled ? 'bg-white shadow-md' : 'bg-brandPurple/70 backdrop-blur-sm'
       }`}
     >
-      <nav className="container-custom">
+      <nav className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <div className="flex justify-between items-center h-20 md:h-24">
           {/* Logo */}
-          <Link to="/" className="flex items-center -ml-2 md:-ml-4">
+          <Link to="/" className="flex items-center">
             <div className="flex flex-col leading-tight">
               <div className={`font-display tracking-logo ${isScrolled ? 'text-brandPurple' : 'text-brandGold'} text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold uppercase`} style={{ letterSpacing: '0.25em' }}>
                 SOLIS

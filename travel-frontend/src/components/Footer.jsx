@@ -5,8 +5,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-brandPurple text-gray-300">
-      <div className="container-custom py-12">
+    <footer className="bg-brandPurple text-gray-300 w-full">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 mb-8">
           {/* Logo, Social, and App Links */}
           <div className="lg:col-span-1">
