@@ -88,13 +88,13 @@ const Header = () => {
       <nav className="container-custom">
         <div className="flex justify-between items-center h-20 md:h-24">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center -ml-2 md:-ml-4">
             <div className="flex flex-col leading-tight">
-              <div className={`font-display tracking-logo ${isScrolled ? 'text-brandPurple' : 'text-brandGold'} text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase`} style={{ letterSpacing: '0.25em' }}>
+              <div className={`font-display tracking-logo ${isScrolled ? 'text-brandPurple' : 'text-brandGold'} text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold uppercase`} style={{ letterSpacing: '0.25em' }}>
                 SOLIS
               </div>
               <div
-                className={`uppercase ${isScrolled ? 'text-brandGold' : 'text-brandGold'} text-[9px] sm:text-[10px] md:text-xs lg:text-sm font-normal mt-1`}
+                className={`uppercase ${isScrolled ? 'text-brandGold' : 'text-brandGold'} text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs font-normal mt-1`}
                 style={{ letterSpacing: '0.4em', fontFamily: `'SourceCode', 'Source Code Pro', monospace` }}
               >
                 PRESTIGE TRAVEL CLUB

@@ -23,7 +23,7 @@ const Home = () => {
         
         {/* Content */}
         <div className="relative z-10 text-center px-4 sm:px-6">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight text-center" style={{ color: '#B794F6' }}>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight text-center" style={{ color: '#B794F6' }}>
             TAILORED JOURNEYS
           </h1>
         </div>
@@ -33,10 +33,10 @@ const Home = () => {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6 sm:mb-8">
               A community for luxury travellers
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-8 sm:mb-10 px-2 sm:px-0">
+            <p className="text-base sm:text-lg md:text-lg lg:text-xl text-gray-700 leading-relaxed mb-8 sm:mb-10 px-2 sm:px-0">
               SOLIS is the trusted community for modern luxury travellers. Find inspiration,
               book unique journeys, and connect with like-minded members.
             </p>
@@ -207,11 +207,11 @@ const Home = () => {
           {/* Feature 1 - VIP Benefits */}
           <div className="grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-center mb-16 md:mb-24">
             <div className="order-1 md:order-1">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4 sm:mb-6 relative inline-block">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-4 sm:mb-6 relative inline-block">
                 Travel in style, with exclusive VIP benefits
                 <span className="block w-24 h-1 bg-purple-600 mt-4"></span>
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mt-6 sm:mt-8">
+              <p className="text-base sm:text-lg md:text-lg lg:text-xl text-gray-600 leading-relaxed mt-6 sm:mt-8">
                 Indulge in luxury with our curated collection of the world's best hotels and 
                 enjoy exclusive VIP benefits.
               </p>
@@ -239,11 +239,11 @@ const Home = () => {
               </div>
             </div>
             <div className="order-1 md:order-2">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4 sm:mb-6 relative inline-block">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-4 sm:mb-6 relative inline-block">
                 Discover new inspiration for your next journey
                 <span className="block w-24 h-1 bg-orange-400 mt-4"></span>
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mt-6 sm:mt-8">
+              <p className="text-base sm:text-lg md:text-lg lg:text-xl text-gray-600 leading-relaxed mt-6 sm:mt-8">
                 Whether it's beautiful destinations or thrilling experiences, ignite your wanderlust 
                 and discover new reasons to travel and explore.
               </p>
@@ -253,11 +253,11 @@ const Home = () => {
           {/* Feature 3 - Community */}
           <div className="grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-center">
             <div className="order-1 md:order-1">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-4 sm:mb-6 relative inline-block">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-4 sm:mb-6 relative inline-block">
                 Belong to a community with a shared passion
                 <span className="block w-24 h-1 bg-rose-400 mt-4"></span>
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mt-6 sm:mt-8">
+              <p className="text-base sm:text-lg md:text-lg lg:text-xl text-gray-600 leading-relaxed mt-6 sm:mt-8">
                 Connect with other members online or at our events and forge lasting friendships 
                 that transcend borders.
               </p>
@@ -279,7 +279,7 @@ const Home = () => {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4 inline-block relative">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-4 inline-block relative">
               Member benefits
               <span className="block w-24 h-1 bg-orange-400 mt-4 mx-auto"></span>
             </h2>
@@ -372,7 +372,7 @@ const Home = () => {
         <div className="container-custom">
           {/* Main Heading */}
           <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4 sm:mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-4 sm:mb-6">
               Our partners
             </h2>
             <div className="w-24 h-1 bg-orange-400 mx-auto mb-8"></div>
