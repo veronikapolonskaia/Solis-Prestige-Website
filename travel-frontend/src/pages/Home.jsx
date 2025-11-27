@@ -23,7 +23,7 @@ const Home = () => {
         
         {/* Content */}
         <div className="relative z-10 text-center px-4 sm:px-6">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight text-center" style={{ color: '#B794F6' }}>
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold tracking-tight text-center text-brandPurple">
             TAILORED JOURNEYS
           </h1>
         </div>
