@@ -9,6 +9,7 @@ import EditorialDetail from './pages/EditorialDetail';
 import Collection from './pages/Collection';
 import HotelDetail from './pages/HotelDetail';
 import HotelBooking from './pages/HotelBooking';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
           {/* Add more routes here as you create pages */}
           {/* <Route path="/destinations" element={<Destinations />} /> */}
           {/* <Route path="/about" element={<About />} /> */}
-          {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/contact" element={<Contact />} />
           {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/register" element={<Register />} />
         </Route>
